@@ -1,0 +1,4 @@
+export enum TEMPLATE {
+    TWENTY_NIGHT = "TGS-TEMPLATE-29",
+    THIRTY_SIX = "TGS-TEMPLATE-36",
+}

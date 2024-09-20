@@ -1,11 +1,13 @@
 import './App.css'
+import { Providers } from '@/components';
+
 
 function App() {
 
   return (
-    <div>
-      {import.meta.env.VITE_API_URL}
-    </div>
+    <Providers>
+      <div></div>
+    </Providers>
   )
 }
 
