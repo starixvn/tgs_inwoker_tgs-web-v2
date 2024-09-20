@@ -6,7 +6,6 @@
   font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
   line-height: 1.5;
   font-weight: 400;
-
   color-scheme: light dark;
   color: rgba(255, 255, 255, 0.87);
   background-color: #242424;
@@ -52,6 +51,9 @@
     /* 已設定 */
     --primary: 31 100 65%;
 
+    /* 當 template 其中一個包含漸層色時， 請參考 --header-background 做法*/
+    --header-background: rgb(49, 88, 255); 
+
     /* 未設定 */
     --background: 0 0% 3.9%;
     --foreground: 0 0% 98%;
@@ -82,7 +84,8 @@
   
   .TGS-TEMPLATE-36 {
     /* 已設定 */
-    --primary: 218, 69%, 25%;
+    --primary: 218 69% 25%;
+    --header-background: linear-gradient(hsl(220 42 52%) 0%, hsl(220 66 25%) 100%);
 
     /* 未設定 */
     --background: 0 0% 3.9%;
