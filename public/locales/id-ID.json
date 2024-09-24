@@ -1,5 +1,6 @@
 {
     "auth": {
-        "login": "Daftar"
+        "login": "Masuk",
+        "register": "Daftar"
     }
 }

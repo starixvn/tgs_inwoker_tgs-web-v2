@@ -1,5 +1,6 @@
 import { Button } from "@/components/ui";
 import { useTranslation } from 'react-i18next';
+import { LanguageSwitch } from "./LanguageSwitch";
 export const AnonymousHeaderContent = () => {
     const { t } = useTranslation();
     return (
@@ -10,6 +11,7 @@ export const AnonymousHeaderContent = () => {
             <Button variant="secondary">
                 {t('auth.register')}
             </Button>
+            <LanguageSwitch />
         </div>
     );
 };
