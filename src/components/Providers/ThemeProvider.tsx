@@ -20,7 +20,7 @@ export const ThemeProvider= ({
                 value={value}
                 onValueChange={(value: TEMPLATE) => setValue(value)}
             >
-                <SelectTrigger className="w-[180px] fixed top-1 right-1">
+                <SelectTrigger className="w-[180px] fixed bottom-1 right-1">
                     <SelectValue placeholder="Theme" />
                 </SelectTrigger>
                 <SelectContent>

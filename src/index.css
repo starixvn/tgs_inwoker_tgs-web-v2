@@ -50,9 +50,17 @@
   .TGS-TEMPLATE-29 {
     /* 已設定 */
     --primary: 31 100 65%;
+
+    /* header */
     --header-text: 0 0% 100%;
     /* 當 template 其中一個包含漸層色時， 請參考 --header-background 做法*/
-    --header-background: rgb(49, 88, 255); 
+    --header-background: rgb(49, 88, 255);
+    
+    /* button */
+    --button-primary-text: 0 0% 100%;
+    --button-primary-background: 31 100 65%;
+    --button-secondary-text: 0 0% 100%;
+    --button-secondary-background: 229 100 74%;
 
     /* 未設定 */
     --background: 0 0% 3.9%;
@@ -85,8 +93,15 @@
   .TGS-TEMPLATE-36 {
     /* 已設定 */
     --primary: 218 69% 25%;
+    /* header */
     --header-text: 0 0% 100%;
     --header-background: linear-gradient(hsl(220 42 52%) 0%, hsl(220 66 25%) 100%);
+
+    /* button */
+    --button-primary-text: 0 0% 100%;
+    --button-primary-background: 218 69% 25%;
+    --button-secondary-text: 0 0% 100%;
+    --button-secondary-background: 208 74 50%;
 
     /* 未設定 */
     --background: 0 0% 3.9%;
