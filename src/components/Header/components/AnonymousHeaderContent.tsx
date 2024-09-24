@@ -1,13 +1,14 @@
 import { Button } from "@/components/ui";
-
+import { useTranslation } from 'react-i18next';
 export const AnonymousHeaderContent = () => {
+    const { t } = useTranslation();
     return (
         <div className="flex gap-2">
             <Button>
-                Login
+               {t('auth.login')}
             </Button>
             <Button variant="secondary">
-                Register
+                {t('auth.register')}
             </Button>
         </div>
     );

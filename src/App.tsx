@@ -1,8 +1,6 @@
 import { Providers, Layout } from '@/components';
 import { Routes, Route } from "react-router-dom";
 
-
-
 function App() {
 
   return (
