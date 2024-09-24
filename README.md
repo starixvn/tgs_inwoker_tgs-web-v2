@@ -34,3 +34,12 @@
 - refactor: 優化 a 檔案
 - style: 修正 header 樣式
 - test: 新增 a feature 測試
+
+## Theme 規則
+### 新增主題色
+1. 在 tailwind.config 中的新增元件顏色，新增方式：以元件方式管理，例如 header, button 等
+2. 在 ./src/index.css 中新增對應主題色的色號，為配合 shadcn/ui 的顏色管理，以 hsl 為主，rbb / hex 為輔
+3. 需新增所有對應 template 的主題色，例如 .TGS-TEMPLATE-29 / .TGS-TEMPLATE-36
+4. 新增完後即可在元件以 tailwind css 的方式使用，例如 className = "text-header-text"，可參考 <LanguageSwitch />, <SystemTime /> 內部寫法
+
+備註：新增完後麻煩將樣式寫在註解 /* 已設定 */ 的下方 
