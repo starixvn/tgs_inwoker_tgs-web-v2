@@ -15,6 +15,7 @@ export default {
   		colors: {
         header: {
           background: 'var(--header-background)',
+		  text: 'hsl(var(--header-text))',
         },
   			background: 'hsl(var(--background))',
   			foreground: 'hsl(var(--foreground))',

@@ -50,7 +50,7 @@
   .TGS-TEMPLATE-29 {
     /* 已設定 */
     --primary: 31 100 65%;
-
+    --header-text: 0 0% 100%;
     /* 當 template 其中一個包含漸層色時， 請參考 --header-background 做法*/
     --header-background: rgb(49, 88, 255); 
 
@@ -85,6 +85,7 @@
   .TGS-TEMPLATE-36 {
     /* 已設定 */
     --primary: 218 69% 25%;
+    --header-text: 0 0% 100%;
     --header-background: linear-gradient(hsl(220 42 52%) 0%, hsl(220 66 25%) 100%);
 
     /* 未設定 */
