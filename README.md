@@ -11,6 +11,7 @@
 ## Git flow
 
 ### 分支規則
+
 1. 主要分支為 main / stage / dev
 2. main: Production 分支
 3. stage: 上 Production 前的分支
@@ -19,6 +20,7 @@
 6. 修 bug：從 main / stage 開分支出去 => 開發完後 merge 到 stage 測試 => 測試完畢後推上 main & merge 到 dev
 
 ### Commit 規則
+
 1. feat: 新增 features
 2. fix: 修補 Bug
 3. hotfix: 修補 Production Bug
@@ -28,6 +30,7 @@
 7. doc: 更新專案內文件
 
 #### 範例
+
 - feat: 新增 a 功能
 - fix: fix a bug
 - hotfix: fix prod bug
@@ -36,10 +39,12 @@
 - test: 新增 a feature 測試
 
 ## Theme 規則
+
 ### 新增主題色
+
 1. 在 tailwind.config 中的新增元件顏色，新增方式：以元件方式管理，例如 header, button 等
 2. 在 ./src/index.css 中新增對應主題色的色號，為配合 shadcn/ui 的顏色管理，以 hsl 為主，rbb / hex 為輔
 3. 需新增所有對應 template 的主題色，例如 .TGS-TEMPLATE-29 / .TGS-TEMPLATE-36
 4. 新增完後即可在元件以 tailwind css 的方式使用，例如 className = "text-header-text"，可參考 <LanguageSwitch />, <SystemTime /> 內部寫法
 
-備註：新增完後麻煩將樣式寫在註解 /* 已設定 */ 的下方 
+備註：新增完後麻煩將樣式寫在註解 /_ 已設定 _/ 的下方

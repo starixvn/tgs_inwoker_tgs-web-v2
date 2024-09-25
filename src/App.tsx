@@ -1,4 +1,4 @@
-import { Providers, Layout } from '@/components';
+import { Providers, Layout } from "@/components";
 import { Routes, Route } from "react-router-dom";
 
 function App() {
@@ -16,7 +16,7 @@ function App() {
         </Route>
       </Routes>
     </Providers>
-  )
+  );
 }
 
-export default App
+export default App;

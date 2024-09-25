@@ -19,8 +19,7 @@ const options: InitOptions = {
     formatSeparator: ".",
   },
   debug: false,
-}
-
+};
 
 i18n
   // .use(LanguageDetector)

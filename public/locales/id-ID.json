@@ -1,6 +1,6 @@
 {
-    "auth": {
-        "login": "Masuk",
-        "register": "Daftar"
-    }
+  "auth": {
+    "login": "Masuk",
+    "register": "Daftar"
+  }
 }

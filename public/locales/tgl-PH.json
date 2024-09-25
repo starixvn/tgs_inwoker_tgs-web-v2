@@ -1,6 +1,6 @@
 {
-    "auth": {
-        "login": "Mag-log in",
-        "register": "Magrehistro"
-    }
+  "auth": {
+    "login": "Mag-log in",
+    "register": "Magrehistro"
+  }
 }

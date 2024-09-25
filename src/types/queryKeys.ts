@@ -1,3 +1,3 @@
 export enum QueryKeys {
-    BRAND_LANGUAGE = 'brandlanguage',
-};
+  BRAND_LANGUAGE = "brandlanguage",
+}
