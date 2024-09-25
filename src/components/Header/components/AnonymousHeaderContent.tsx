@@ -1,6 +1,6 @@
 import { Button } from "@/components/ui";
 import { useTranslation } from 'react-i18next';
-import { LanguageSwitch } from "./LanguageSwitch";
+import { LanguageSwitch } from "@/components";
 export const AnonymousHeaderContent = () => {
     const { t } = useTranslation();
     return (
