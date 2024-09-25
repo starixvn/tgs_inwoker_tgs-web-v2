@@ -1,7 +1,14 @@
 import { Outlet } from "react-router-dom";
-import { Header, Modal } from "@/components";
+import { Header, Loading, Modal } from "@/components";
+import { useInitBrand } from "@/lib";
 
 export function Layout() {
+  const { isLoading } = useInitBrand();
+
+  if (isLoading) {
+    return <Loading />;
+  }
+
   return (
     <>
       <Modal />

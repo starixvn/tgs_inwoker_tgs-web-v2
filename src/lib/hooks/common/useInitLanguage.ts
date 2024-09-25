@@ -1,10 +1,10 @@
 import { useQuery } from "@tanstack/react-query";
 import { common } from "@/service";
-import { QueryKeys } from "@/types";
+import { QUERY_KEYS } from "@/types";
 
 export const useInitLanguage = () => {
   const { data, isLoading } = useQuery({
-    queryKey: [QueryKeys.BRAND_LANGUAGE],
+    queryKey: [QUERY_KEYS.BRAND_LANGUAGE],
     queryFn: () => common.getBrandLanguage(),
   });
 
