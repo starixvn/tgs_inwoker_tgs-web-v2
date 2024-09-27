@@ -2,5 +2,22 @@
   "auth": {
     "login": "Masuk",
     "register": "Daftar"
+  },
+  "game": {
+    "gameType": {
+      "cardGame": "Card Game",
+      "egame": "Egame",
+      "esports": "Esports",
+      "fishing": "Fishing",
+      "horse": "Horse",
+      "liveCasino": "Live Casino",
+      "lottery": "Lottery",
+      "sabong": "Sabong",
+      "slot": "Slot",
+      "sports": "Sports"
+    }
+  },
+  "common": {
+    "promotion": "Promotion"
   }
 }

@@ -33,7 +33,7 @@ export const Header = () => {
         {isAuth ? <AccountHeaderContent /> : <AnonymousHeaderContent />}
       </div>
 
-      <nav className="w-full px-12 py-2">
+      <nav className="w-full px-12 py-2 grid grid-cols-[auto_1fr]">
         <Link to="/" className="block w-fit">
           <img src={brandData?.desktopLogoUrl} alt="logo" className="h-8" />
         </Link>

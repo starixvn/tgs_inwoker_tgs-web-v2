@@ -49,7 +49,8 @@
   .TGS-TEMPLATE-29 {
     /* 已設定 */
     --primary: 31 100 65%;
-
+    --accent: 55 9% 85%;
+    --accent-foreground: 0 0% 19%;
     /* header */
     --header-text: 0 0% 100%;
     /* 當 template 其中一個包含漸層色時， 請參考 --header-background 做法*/
@@ -73,8 +74,7 @@
     --secondary-foreground: 0 0% 98%;
     --muted: 0 0% 14.9%;
     --muted-foreground: 0 0% 63.9%;
-    --accent: 0 0% 14.9%;
-    --accent-foreground: 0 0% 98%;
+
     --destructive: 0 62.8% 30.6%;
     --destructive-foreground: 0 0% 98%;
     --border: 0 0% 14.9%;
@@ -92,6 +92,8 @@
   .TGS-TEMPLATE-36 {
     /* 已設定 */
     --primary: 218 69% 25%;
+    --accent: 0 0 80%;
+    --accent-foreground: 218 69% 25%;
     /* header */
     --header-text: 0 0% 100%;
     --header-background: linear-gradient(
@@ -117,7 +119,6 @@
     --secondary-foreground: 0 0% 98%;
     --muted: 0 0% 14.9%;
     --muted-foreground: 0 0% 63.9%;
-    --accent: 0 0% 14.9%;
     --accent-foreground: 0 0% 98%;
     --destructive: 0 62.8% 30.6%;
     --destructive-foreground: 0 0% 98%;

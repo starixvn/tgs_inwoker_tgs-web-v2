@@ -8,5 +8,6 @@ export * from "./zustand";
 export * from "./auth";
 export * from "./currency";
 export * from "./timezone";
+export * from "./game";
 
 export type GetQueryData<T> = AxiosResponse<T> | undefined;

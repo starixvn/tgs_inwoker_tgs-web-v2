@@ -1,14 +1,30 @@
-import { Loading } from "@/components";
-import { useGameProvider } from "@/lib";
+import { Loading, HoverCard } from "@/components";
+import { Button } from "@/components/ui";
+import { useGameProvider, useGetNavItemList } from "@/lib";
 
 export const GameProviderList = () => {
-  const { data, isFetching } = useGameProvider();
+  const { providerList, isFetching } = useGameProvider();
+  const navItemList = useGetNavItemList(providerList);
 
   if (isFetching) {
     return <Loading />;
   }
 
-  console.log(data);
+  return (
+    <div className="w-full">
+      {navItemList.map((navItem) => {
+        const trigger = (
+          <Button key={navItem.key} variant="ghost" className="font-bold">
+            {navItem.label}
+          </Button>
+        );
 
-  return <div>test</div>;
+        return (
+          <HoverCard trigger={trigger}>
+            <div>{navItem.label}</div>
+          </HoverCard>
+        );
+      })}
+    </div>
+  );
 };

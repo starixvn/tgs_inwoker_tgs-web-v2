@@ -19,6 +19,6 @@ export const useGameProvider = () => {
 
   return {
     isFetching,
-    data,
+    providerList: data ? data.data.data : [],
   };
 };
