@@ -1,3 +1,5 @@
+import { text } from "stream/consumers";
+
 /** @type {import('tailwindcss').Config} */
 export default {
   darkMode: ["class"],
@@ -13,6 +15,10 @@ export default {
         header: {
           background: "var(--header-background)",
           text: "hsl(var(--header-text))",
+        },
+        nav: {
+          background: "hsl(var(--nav-background))",
+          text: "hsl(var(--nav-text))",
         },
         button: {
           primary: {

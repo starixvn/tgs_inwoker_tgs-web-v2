@@ -11,8 +11,8 @@ type Props = {
 
 export const HoverCard = ({ children, trigger }: Props) => {
   return (
-    <HoverCardComponent>
-      <HoverCardTrigger>{trigger}</HoverCardTrigger>
+    <HoverCardComponent closeDelay={0}>
+      <HoverCardTrigger asChild>{trigger}</HoverCardTrigger>
       <HoverCardContent className="w-screen rounded-none">
         {children}
       </HoverCardContent>

@@ -9,5 +9,6 @@ export * from "./auth";
 export * from "./currency";
 export * from "./timezone";
 export * from "./game";
+export * from "./routes";
 
 export type GetQueryData<T> = AxiosResponse<T> | undefined;

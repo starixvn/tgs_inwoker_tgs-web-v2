@@ -1,5 +1,5 @@
 import { GameTypeItem, GAME_TYPE_KEY } from "../game/types";
-import { GAME_TYPE_CODE } from "@/types";
+import { GAME_TYPE_CODE, ROUTES } from "@/types";
 import { ProviderDto } from "@/service";
 import { useTranslation } from "react-i18next";
 
@@ -23,46 +23,29 @@ const gameTypeList: GameTypeItem[] = Object.values(GAME_TYPE_KEY).map((key) => {
   };
 });
 
-type Route = {
-  navType: "route";
-  routePath: string;
-};
-
-type Action = {
-  navType: "action";
-  callback: () => void;
-};
-
 export type NavItem = {
-  key: string;
   label: string;
-  router?: string;
-  routePath?: string;
+  routePath: ROUTES | GAME_TYPE_KEY;
   gameType: GAME_TYPE_CODE;
-} & (Route | Action);
+  isHoverCard: boolean;
+};
 
 export const useGetNavItemList = (providerList: ProviderDto[]): NavItem[] => {
   const { t } = useTranslation();
   const navItemList: NavItem[] = [];
+
   const promotion: NavItem = {
-    key: "promotion",
     label: t("common.promotion"),
-    navType: "action",
     gameType: GAME_TYPE_CODE.NONE,
-    router: "promotion-list",
-    callback: () => {
-      // history.push("/promotion-list");
-    },
+    routePath: ROUTES.PROMOTION,
+    isHoverCard: false,
   };
+
   const vip: NavItem = {
-    key: "VIP",
     label: "VIP",
-    navType: "action",
     gameType: GAME_TYPE_CODE.NONE,
-    router: "vip",
-    callback: () => {
-      // history.push("/vip");
-    },
+    isHoverCard: false,
+    routePath: ROUTES.VIP,
   };
 
   for (const gameTypeItem of gameTypeList) {
@@ -81,19 +64,14 @@ export const useGetNavItemList = (providerList: ProviderDto[]): NavItem[] => {
     }
 
     const navItem: NavItem = {
-      key: gameTypeItem.key,
+      isHoverCard: true,
       label: t(gameTypeItem.localeKey),
-      navType: "action",
       gameType: gameTypeItem.gameType,
-      router: gameTypeItem.key,
-      callback: () => {
-        //   handleChangeGameType(gameTypeItem.gameType);
-        //   history.push(`/main/${gameTypeItem.key}`);
-      },
+      routePath: gameTypeItem.key,
     };
+
     navItemList.push(navItem);
   }
 
-  console.log(navItemList);
   return [...navItemList, promotion, vip];
 };

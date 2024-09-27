@@ -1,28 +1,44 @@
-import { useQueryClient } from "@tanstack/react-query";
-import { Link } from "react-router-dom";
+import { useRWD } from "@/lib";
 import {
   AccountHeaderContent,
   AnonymousHeaderContent,
-  GameProviderList,
+  Nav,
   SystemTime,
+  Logo,
 } from "./components";
-import { QUERY_KEYS } from "@/types";
-import { GetBrandDto } from "@/service/common/types";
-import { AxiosResponse } from "axios";
+
+const MobileHeader = ({ children }: { children: React.ReactNode }) => {
+  return (
+    <nav
+      className="w-full p-2 justify-between flex text-nav-text"
+      style={{
+        background: "var(--header-background)",
+      }}
+    >
+      <Logo />
+      {children}
+    </nav>
+  );
+};
 
 export const Header = () => {
   /**
    * @todo 改成動態判斷是否登入
    */
   const isAuth = false;
-  const qc = useQueryClient();
-  const data = qc.getQueryData([QUERY_KEYS.BRAND]) as
-    | AxiosResponse<GetBrandDto>
-    | undefined;
-  const brandData = data?.data.data;
+  const { isMobile } = useRWD();
+  const authChidlren = isAuth ? (
+    <AccountHeaderContent />
+  ) : (
+    <AnonymousHeaderContent />
+  );
+
+  if (isMobile) {
+    return <MobileHeader>{authChidlren}</MobileHeader>;
+  }
 
   return (
-    <header className="w-full">
+    <header className="w-full sticky top-0">
       <div
         className="w-full px-12 py-2 flex justify-between items-center"
         style={{
@@ -30,14 +46,12 @@ export const Header = () => {
         }}
       >
         <SystemTime />
-        {isAuth ? <AccountHeaderContent /> : <AnonymousHeaderContent />}
+        {authChidlren}
       </div>
 
-      <nav className="w-full px-12 py-2 grid grid-cols-[auto_1fr]">
-        <Link to="/" className="block w-fit">
-          <img src={brandData?.desktopLogoUrl} alt="logo" className="h-8" />
-        </Link>
-        <GameProviderList />
+      <nav className="w-full px-12 py-2 grid gap-4 grid-cols-[auto_1fr] bg-nav-background text-nav-text">
+        <Logo />
+        <Nav />
       </nav>
     </header>
   );
