@@ -1,7 +1,9 @@
 import { useQueryClient } from "@tanstack/react-query";
+import { Link } from "react-router-dom";
 import {
   AccountHeaderContent,
   AnonymousHeaderContent,
+  GameProviderList,
   SystemTime,
 } from "./components";
 import { QUERY_KEYS } from "@/types";
@@ -22,7 +24,7 @@ export const Header = () => {
   return (
     <header className="w-full">
       <div
-        className="w-full p-2 flex justify-between items-center"
+        className="w-full px-12 py-2 flex justify-between items-center"
         style={{
           background: "var(--header-background)",
         }}
@@ -31,12 +33,11 @@ export const Header = () => {
         {isAuth ? <AccountHeaderContent /> : <AnonymousHeaderContent />}
       </div>
 
-      <nav className="w-full">
-        <img
-          src={brandData?.desktopLogoUrl}
-          alt={brandData?.code}
-          className="h-8"
-        />
+      <nav className="w-full px-12 py-2">
+        <Link to="/" className="block w-fit">
+          <img src={brandData?.desktopLogoUrl} alt="logo" className="h-8" />
+        </Link>
+        <GameProviderList />
       </nav>
     </header>
   );

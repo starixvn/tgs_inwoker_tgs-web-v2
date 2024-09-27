@@ -19,3 +19,5 @@ export const common = {
   getBrandLanguage,
   getBrand,
 };
+
+export * from "./types";

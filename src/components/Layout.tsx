@@ -3,9 +3,9 @@ import { Header, Loading, Modal } from "@/components";
 import { useInitBrand } from "@/lib";
 
 export function Layout() {
-  const { isLoading } = useInitBrand();
+  const { isFetching } = useInitBrand();
 
-  if (isLoading) {
+  if (isFetching) {
     return <Loading />;
   }
 

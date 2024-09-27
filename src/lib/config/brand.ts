@@ -1,25 +1,48 @@
-import { BRAND_CODE, TEMPLATE } from "@/types";
+import { BRAND_CODE, TEMPLATE, CURRENCY, LOCALES, TIMEZONE } from "@/types";
 
 export interface TemplateConfig {
   template: TEMPLATE;
-  timeZone: string;
-  language: string;
+  timeZone: TIMEZONE;
+  language: LOCALES;
+  currency: CURRENCY;
 }
 
+/**
+ * 整合以下兩個 config
+ * @alias BRAND_CODE 請帶入 enum BRAND_CODE
+ * @see tgs-web-nx\libs\config\src\config\brand.ts
+ * @see https://app12.srvptt.com/config_${BRAND_CODE}.json
+ */
 export const brandConfig: Record<BRAND_CODE, TemplateConfig> = {
   [BRAND_CODE.GPI]: {
     template: TEMPLATE.TWENTY_NIGHT,
-    timeZone: "Asia/Taipei", // 預設
-    language: "en-US",
+    timeZone: TIMEZONE.TW,
+    language: LOCALES.EN,
+    currency: CURRENCY.USD,
   },
   [BRAND_CODE.MOPH]: {
     template: TEMPLATE.TWENTY_NIGHT,
-    timeZone: "Asia/Manila", // 菲律賓
-    language: "tgl-PH",
+    timeZone: TIMEZONE.PH,
+    language: LOCALES.PH,
+    currency: CURRENCY.PHP,
   },
   [BRAND_CODE.SBO]: {
     template: TEMPLATE.THIRTY_SIX,
-    timeZone: "Asia/Jakarta", // 印尼
-    language: "id-ID",
+    timeZone: TIMEZONE.ID,
+    language: LOCALES.ID,
+    currency: CURRENCY.IDR,
   },
+};
+
+/**
+ * 取得品牌設定 Fallback 為 GPI
+ * @param brandCode
+ * @returns brandConfig
+ */
+export const getBrandConfig = (brandCode?: BRAND_CODE) => {
+  if (brandCode && brandConfig[brandCode]) {
+    return brandConfig[brandCode];
+  }
+
+  return brandConfig[BRAND_CODE.GPI];
 };

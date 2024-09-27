@@ -28,7 +28,7 @@ const languageConfig: Record<LOCALES, string> = {
  * @todo 加入動態語系
  */
 export const LanguageSwitch = () => {
-  const { languageList, isLoading } = useInitLanguage();
+  const { languageList, isFetching } = useInitLanguage();
   const { i18n } = useTranslation();
   const [value, setValue] = useState<LOCALES>(LOCALES.EN);
   const handleOnChange = (value: LOCALES) => {
@@ -36,7 +36,7 @@ export const LanguageSwitch = () => {
     i18n.changeLanguage(value);
   };
 
-  if (isLoading) {
+  if (isFetching) {
     return <Loading />;
   }
 
