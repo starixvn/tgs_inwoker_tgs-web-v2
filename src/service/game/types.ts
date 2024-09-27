@@ -9,6 +9,11 @@ export interface ProviderDto {
   status: number;
 }
 
+export enum PLATEFORM_TYPE {
+  PC = 0,
+  MOBILE = 1,
+}
+
 export type getGameProviderDto = {
   data: ProviderDto[];
 } & BasicDto;
