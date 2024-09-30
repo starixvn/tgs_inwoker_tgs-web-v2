@@ -7,6 +7,7 @@ export enum QUERY_KEYS {
   //init
   BRAND_LANGUAGE = "brandlanguage",
   BRAND = "brand",
+  SOCIAL_MEDIA = "brand/social",
 
   //game
   GAME_PROVIDER_LIST = "GameProvider/list",

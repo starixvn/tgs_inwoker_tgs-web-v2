@@ -10,5 +10,6 @@ export * from "./currency";
 export * from "./timezone";
 export * from "./game";
 export * from "./routes";
+export * from "./socialMedia";
 
 export type GetQueryData<T> = AxiosResponse<T> | undefined;

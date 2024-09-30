@@ -4,7 +4,7 @@ import { useTranslation } from "react-i18next";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 
 import { ROUTES } from "@/types";
-import { LanguageSwitch } from "@/components";
+import { LanguageSwitch, SocialMediaList } from "@/components";
 import {
   AlertDialog,
   AlertDialogContent,
@@ -80,6 +80,7 @@ export const AuthDialog = ({ children }: Props) => {
             {t(authConfig[pathname as AuthRoute].redirectText)}
           </Link>
         </AlertDialogDescription>
+        <SocialMediaList />
         <LanguageSwitch className="mx-auto" mode="outline" />
       </AlertDialogContent>
     </AlertDialog>

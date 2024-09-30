@@ -1,4 +1,9 @@
-import { BRAND_CODE, LOCALES, PLAYER_REGISTER_FLOW } from "@/types";
+import {
+  BRAND_CODE,
+  LOCALES,
+  PLAYER_REGISTER_FLOW,
+  SOCIAL_MEDIA,
+} from "@/types";
 import { BasicDto } from "@/service";
 
 export type GetBrandLanguageDto = {
@@ -21,4 +26,15 @@ export type BrandData = {
 
 export type GetBrandDto = {
   data: BrandData;
+} & BasicDto;
+
+type SocialMediaData = {
+  id: string;
+  name: string;
+  type: SOCIAL_MEDIA;
+  url: string;
+};
+
+export type GetSocialMediaDto = {
+  data: SocialMediaData[];
 } & BasicDto;
