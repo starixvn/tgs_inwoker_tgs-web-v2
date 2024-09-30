@@ -19,6 +19,7 @@ export function Layout() {
               so you can think about this <Outlet> as a placeholder for
               the child routes we defined above. */}
         <div className="flex-1">
+          home
           <Outlet />
         </div>
         <footer>footer</footer>

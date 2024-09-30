@@ -6,21 +6,27 @@ import {
   SelectItem,
 } from "@/components/ui";
 import { TEMPLATE } from "@/types";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 type Props = {
   children: React.ReactNode;
 };
 
 export const ThemeProvider = ({ children }: Props) => {
-  const [value, setValue] = useState<TEMPLATE>(TEMPLATE.TWENTY_NIGHT);
+  const [theme, setTheme] = useState<TEMPLATE>(TEMPLATE.TWENTY_NIGHT);
+
+  useEffect(() => {
+    const root = window.document.documentElement;
+    root.classList.remove(TEMPLATE.TWENTY_NIGHT, TEMPLATE.THIRTY_SIX);
+    root.classList.add(theme);
+  }, [theme]);
 
   return (
     <>
-      <main className={value}>{children}</main>
+      <main>{children}</main>
       <Select
-        value={value}
-        onValueChange={(value: TEMPLATE) => setValue(value)}
+        value={theme}
+        onValueChange={(theme: TEMPLATE) => setTheme(theme)}
       >
         <SelectTrigger className="w-[180px] fixed bottom-1 right-1">
           <SelectValue placeholder="Theme" />

@@ -30,6 +30,12 @@ export default {
             background: "hsl(var(--button-secondary-background))",
           },
         },
+        dialog: {
+          background: "hsl(var(--dialog-background))",
+          text: "hsl(var(--dialog-text))",
+          foreground: "hsl(var(--dialog-foreground))",
+        },
+
         background: "hsl(var(--background))",
         foreground: "hsl(var(--foreground))",
         card: {

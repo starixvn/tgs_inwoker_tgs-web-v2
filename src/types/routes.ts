@@ -1,10 +1,11 @@
 export enum ROUTES {
   // common
-  VIP = "vip",
-  PROMOTION = "promotion",
+  HOME = "/",
+  VIP = "/vip",
+  PROMOTION = "/promotion",
 
   //auth
-  LOGIN = "login",
-  REGISTER = "register",
-  FORGET_PASSWORD = "forgetPassword",
+  LOGIN = "/login",
+  REGISTER = "/register",
+  FORGET_PASSWORD = "/forgetPassword",
 }
