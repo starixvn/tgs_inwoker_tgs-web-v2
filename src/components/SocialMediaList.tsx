@@ -1,6 +1,6 @@
 import { useSocialMedia } from "@/lib";
 import { SOCIAL_MEDIA } from "@/types";
-import { Loading } from "./Loading";
+import { Loader } from "./Loader";
 
 /**
  * @key SOCIAL_MEDIA
@@ -20,7 +20,7 @@ export const SocialMediaList = () => {
   const { isFetching, socialMediaList } = useSocialMedia();
 
   if (isFetching) {
-    return <Loading />;
+    return <Loader />;
   }
 
   return (
