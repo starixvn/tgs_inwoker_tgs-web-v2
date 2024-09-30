@@ -61,14 +61,14 @@ export const AuthDialog = ({ children }: Props) => {
 
   return (
     <AlertDialog open>
-      <AlertDialogContent>
+      <AlertDialogContent className="gap-5">
         <Link to={ROUTES.HOME} className="block w-fit ml-auto">
           <Button size="icon" variant="ghost">
             <X />
           </Button>
         </Link>
-        <AlertDialogTitle>
-          {t(authConfig[pathname as AuthRoute].title)}
+        <AlertDialogTitle className="text-dialog-foreground text-4xl text-center">
+          {t(authConfig[pathname as AuthRoute].title).toUpperCase()}
         </AlertDialogTitle>
         {children}
         <AlertDialogDescription className="flex gap-2 justify-center items-center">
@@ -80,7 +80,7 @@ export const AuthDialog = ({ children }: Props) => {
             {t(authConfig[pathname as AuthRoute].redirectText)}
           </Link>
         </AlertDialogDescription>
-        <LanguageSwitch />
+        <LanguageSwitch className="mx-auto" mode="outline" />
       </AlertDialogContent>
     </AlertDialog>
   );

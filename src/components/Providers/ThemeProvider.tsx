@@ -23,7 +23,7 @@ export const ThemeProvider = ({ children }: Props) => {
 
   return (
     <>
-      <main>{children}</main>
+      {children}
       <Select
         value={theme}
         onValueChange={(theme: TEMPLATE) => setTheme(theme)}

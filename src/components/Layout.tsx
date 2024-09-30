@@ -10,20 +10,13 @@ export function Layout() {
   }
 
   return (
-    <>
+    <main className="min-h-dvh flex flex-col w-full">
       <Modal />
-      <section className="min-h-screen flex flex-col w-full">
-        <Header />
-
-        {/* An <Outlet> renders whatever child route is currently active,
-              so you can think about this <Outlet> as a placeholder for
-              the child routes we defined above. */}
-        <div className="flex-1">
-          home
-          <Outlet />
-        </div>
-        <footer>footer</footer>
+      <Header />
+      <section className="flex-1">
+        <Outlet />
       </section>
-    </>
+      <footer>footer</footer>
+    </main>
   );
 }

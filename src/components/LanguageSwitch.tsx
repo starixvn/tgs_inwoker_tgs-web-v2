@@ -6,9 +6,8 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui";
-import { useState } from "react";
 import { useTranslation } from "react-i18next";
-import { useInitLanguage } from "@/lib";
+import { cn, useInitLanguage, useLocales } from "@/lib";
 import { Loading } from "@/components";
 
 const languageConfig: Record<LOCALES, string> = {
@@ -24,28 +23,39 @@ const languageConfig: Record<LOCALES, string> = {
   [LOCALES.JP]: "日本語",
 };
 
+type Props = {
+  className?: string;
+  mode?: "outline" | "ghost";
+};
+
 /**
  * @todo 加入動態語系
  */
-export const LanguageSwitch = () => {
+export const LanguageSwitch = ({ className, mode = "ghost" }: Props) => {
   const { languageList, isFetching } = useInitLanguage();
   const { i18n } = useTranslation();
-  const [value, setValue] = useState<LOCALES>(LOCALES.EN);
-  const handleOnChange = (value: LOCALES) => {
-    setValue(value);
-    i18n.changeLanguage(value);
+  const { locale, onChange } = useLocales();
+
+  const handleOnChange = (locale: LOCALES) => {
+    onChange(locale);
+    i18n.changeLanguage(locale);
   };
 
   if (isFetching) {
     return <Loading />;
   }
 
+  const modeClass = {
+    outline: "",
+    ghost: "border-none text-header-text",
+  };
+
   return (
-    <div className="text-header-text font-bold">
-      <Select value={value} onValueChange={handleOnChange}>
-        <SelectTrigger className="w-auto border-none">
+    <div className={cn("font-bold", className)}>
+      <Select value={locale} onValueChange={handleOnChange}>
+        <SelectTrigger className={modeClass[mode]}>
           <SelectValue placeholder="Language">
-            {languageConfig[value]}
+            {languageConfig[locale]}
           </SelectValue>
         </SelectTrigger>
         <SelectContent>
