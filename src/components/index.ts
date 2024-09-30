@@ -5,3 +5,5 @@ export * from "./Loading";
 export * from "./LanguageSwitch";
 export * from "./Modal";
 export * from "./HoverCard";
+export * from "./Routers";
+export * from "./auth";

@@ -7,7 +7,6 @@ export const Loading = () => {
   const qc = useQueryClient();
   const data = qc.getQueryData([QUERY_KEYS.BRAND]) as GetQueryData<GetBrandDto>;
   const imageUrl = data?.data.data.loadingUrl;
-  console.log(imageUrl);
 
   return (
     <div className="fixed inset-0 z-50 bg-black text-primary data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0 flex flex-col  justify-center items-center">
