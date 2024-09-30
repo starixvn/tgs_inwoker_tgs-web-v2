@@ -1,7 +1,12 @@
 {
   "auth": {
     "login": "Mag-log in",
-    "register": "Magrehistro"
+    "register": "Magrehistro",
+    "forgetPassword": "Forget Password",
+    "description": {
+      "login": "Don't have an account?",
+      "register": "Already have an account?"
+    }
   },
   "game": {
     "gameType": {

@@ -1,7 +1,12 @@
 {
   "auth": {
     "login": "Login",
-    "register": "Register"
+    "register": "Register",
+    "forgetPassword": "Forget Password",
+    "description": {
+      "login": "Don't have an account?",
+      "register": "Already have an account?"
+    }
   },
   "game": {
     "gameType": {
