@@ -21,23 +21,18 @@ import { Eye, EyeOffIcon } from "lucide-react";
 import { Link } from "react-router-dom";
 import { ROUTES } from "@/types";
 
-const formSchema = z.object({
-  username: z
-    .string()
-    .min(6, {
-      message: "Username must be at least 6 characters.",
-    })
-    .max(32, {
-      message: "Username must be at most 32 characters.",
-    }),
-  password: z.string().min(1, {
-    message: "Password is required.",
-  }),
-});
-
 export const Login = () => {
-  const [passwordVisible, setPasswordVisible] = useState(false);
   const { t } = useTranslation();
+  const [passwordVisible, setPasswordVisible] = useState(false);
+
+  const formSchema = z.object({
+    username: z
+      .string()
+      .min(6, { message: t("auth.username.errorMin") })
+      .max(32, { message: t("auth.username.errorMax") }),
+    password: z.string().min(1, { message: t("auth.password.errorMin") }),
+  });
+
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
@@ -60,7 +55,10 @@ export const Login = () => {
             render={({ field }) => (
               <FormItem>
                 <FormControl>
-                  <Input placeholder={t("auth.username")} {...field} />
+                  <Input
+                    placeholder={t("auth.username.placeholder")}
+                    {...field}
+                  />
                 </FormControl>
                 <FormMessage />
               </FormItem>
@@ -75,7 +73,7 @@ export const Login = () => {
                   <div className="relative">
                     <Input
                       type={passwordVisible ? "text" : "password"}
-                      placeholder={t("auth.password")}
+                      placeholder={t("auth.password.placeholder")}
                       {...field}
                     />
                     <Button
@@ -96,14 +94,14 @@ export const Login = () => {
           <div className="flex justify-between items-center">
             <Label className="cursor-pointer flex items-center gap-1">
               <Checkbox />
-              Remember me
+              {t("auth.rememberMe")}
             </Label>
             <Link to={ROUTES.FORGET_PASSWORD} className="text-primary">
-              Forget password?
+              {t("auth.forgetPassword")}?
             </Link>
           </div>
           <Button type="submit" className="w-full">
-            Submit
+            {t("auth.login")}
           </Button>
         </form>
       </Form>

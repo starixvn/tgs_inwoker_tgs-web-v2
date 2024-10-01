@@ -1,12 +1,22 @@
 {
   "auth": {
-    "login": "Mag-log in",
-    "register": "Magrehistro",
+    "login": "Login",
+    "register": "Register",
     "forgetPassword": "Forget Password",
     "description": {
       "login": "Don't have an account?",
       "register": "Already have an account?"
-    }
+    },
+    "username": {
+      "placeholder": "Username",
+      "errorMin": "Username must be at least 6 characters.",
+      "errorMax": "Username must be at most 32 characters."
+    },
+    "password": {
+      "placeholder": "Password",
+      "errorMin": "Password is required."
+    },
+    "rememberMe": "Remember Me"
   },
   "game": {
     "gameType": {
