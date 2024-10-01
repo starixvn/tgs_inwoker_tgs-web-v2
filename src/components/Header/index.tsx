@@ -1,4 +1,4 @@
-import { useRWD } from "@/lib";
+import { useRWD, useStoreToken } from "@/lib";
 import {
   AccountHeaderContent,
   AnonymousHeaderContent,
@@ -22,10 +22,8 @@ const MobileHeader = ({ children }: { children: React.ReactNode }) => {
 };
 
 export const Header = () => {
-  /**
-   * @todo 改成動態判斷是否登入
-   */
-  const isAuth = false;
+  const { token } = useStoreToken();
+  const isAuth = !!token;
   const { isMobile, isDesktop, isLaptop } = useRWD();
   const authChidlren = isAuth ? (
     <AccountHeaderContent />

@@ -18,3 +18,4 @@ export * from "./common";
 export * from "./types";
 export * from "./game";
 export * from "./auth";
+export * from "./player";

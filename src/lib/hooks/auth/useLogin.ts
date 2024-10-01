@@ -1,18 +1,29 @@
 import { ApiResponseError, auth, LoginPayload } from "@/service";
 import { useMutation } from "@tanstack/react-query";
 import { useHandleError, useStoreToken } from "@/lib";
-import { LOCAL_STORAGE_KEY } from "@/types";
+import { LOCAL_STORAGE_KEY, ROUTES } from "@/types";
+import { useLocation, useNavigate } from "react-router-dom";
 
 export const useLogin = () => {
   const { onChange } = useStoreToken();
   const { handleError } = useHandleError();
-  const { mutate, isPending, isSuccess } = useMutation({
+  const location = useLocation();
+  const navigate = useNavigate();
+
+  const { mutate, isPending } = useMutation({
     mutationFn: (payload: LoginPayload) => auth.login(payload),
     onSuccess: ({ data }) => {
       if (data.token) {
         onChange(data.token);
         localStorage.setItem(LOCAL_STORAGE_KEY.TOKEN, data.token);
       }
+
+      if (location.search.includes("?redirectUrl=")) {
+        navigate(location.search.replace("?redirectUrl=", ""));
+        return;
+      }
+
+      navigate(ROUTES.HOME);
     },
     onError: (error: ApiResponseError) => {
       handleError(error);
@@ -22,6 +33,5 @@ export const useLogin = () => {
   return {
     login: mutate,
     isPending,
-    isSuccess,
   };
 };

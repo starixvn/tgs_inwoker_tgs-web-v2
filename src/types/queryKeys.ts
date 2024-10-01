@@ -14,4 +14,7 @@ export enum QUERY_KEYS {
 
   //game
   GAME_PROVIDER_LIST = "GameProvider/list",
+
+  //player
+  PLAYER_INFO = "player/info",
 }

@@ -22,7 +22,7 @@ import { useLogin } from "@/lib";
 
 export const Login = () => {
   const { t } = useTranslation();
-  const { login, isPending, isSuccess } = useLogin();
+  const { login, isPending } = useLogin();
   const [passwordVisible, setPasswordVisible] = useState(false);
   const formSchema = z.object({
     username: z
@@ -101,7 +101,7 @@ export const Login = () => {
               {t("auth.forgetPassword")}?
             </Link>
           </div>
-          <Button type="submit" className="w-full">
+          <Button type="submit" className="w-full" disabled={isPending}>
             {t("auth.login")}
           </Button>
         </form>
