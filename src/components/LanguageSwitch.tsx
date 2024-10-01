@@ -8,7 +8,7 @@ import {
 } from "@/components/ui";
 import { useTranslation } from "react-i18next";
 import { cn, useInitLanguage, useLocales } from "@/lib";
-import { Loading } from "@/components";
+import { Loader, Loading } from "@/components";
 
 const languageConfig: Record<LOCALES, string> = {
   [LOCALES.EN]: "English",
@@ -42,7 +42,7 @@ export const LanguageSwitch = ({ className, mode = "ghost" }: Props) => {
   };
 
   if (isFetching) {
-    return <Loading />;
+    return <Loader />;
   }
 
   const modeClass = {

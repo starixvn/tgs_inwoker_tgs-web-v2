@@ -6,7 +6,9 @@
     "description": {
       "login": "Don't have an account?",
       "register": "Already have an account?"
-    }
+    },
+    "username": "Username",
+    "password": "Password"
   },
   "game": {
     "gameType": {

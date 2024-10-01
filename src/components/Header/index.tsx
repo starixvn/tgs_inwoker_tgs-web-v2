@@ -26,7 +26,7 @@ export const Header = () => {
    * @todo 改成動態判斷是否登入
    */
   const isAuth = false;
-  const { isMobile } = useRWD();
+  const { isMobile, isDesktop, isLaptop } = useRWD();
   const authChidlren = isAuth ? (
     <AccountHeaderContent />
   ) : (
@@ -49,10 +49,12 @@ export const Header = () => {
         {authChidlren}
       </div>
 
-      <nav className="w-full px-12 py-2 grid gap-4 grid-cols-[auto_1fr] bg-nav-background text-nav-text">
-        <Logo />
-        <Nav />
-      </nav>
+      {(isDesktop || isLaptop) && (
+        <nav className="w-full px-12 py-2 grid gap-4 grid-cols-[auto_1fr] bg-nav-background text-nav-text">
+          <Logo />
+          <Nav />
+        </nav>
+      )}
     </header>
   );
 };

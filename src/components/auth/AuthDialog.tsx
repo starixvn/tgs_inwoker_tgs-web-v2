@@ -17,7 +17,7 @@ type Props = {
   children: React.ReactNode;
 };
 
-type AuthRoute = ROUTES.LOGIN | ROUTES.REGISTER;
+type AuthRoute = ROUTES.LOGIN | ROUTES.REGISTER | ROUTES.FORGET_PASSWORD;
 type Config = {
   title: string;
   description: string;
@@ -35,6 +35,12 @@ const authConfig: Record<AuthRoute, Config> = {
   [ROUTES.REGISTER]: {
     title: "auth.register",
     description: "auth.description.register",
+    redirectUrl: ROUTES.LOGIN,
+    redirectText: "auth.login",
+  },
+  [ROUTES.FORGET_PASSWORD]: {
+    title: "auth.forgetPassword",
+    description: "auth.description.forgetPassword",
     redirectUrl: ROUTES.LOGIN,
     redirectText: "auth.login",
   },
@@ -61,27 +67,29 @@ export const AuthDialog = ({ children }: Props) => {
 
   return (
     <AlertDialog open>
-      <AlertDialogContent className="gap-5">
+      <AlertDialogContent className="gap-5 bg-dialog-background">
         <Link to={ROUTES.HOME} className="block w-fit ml-auto">
           <Button size="icon" variant="ghost">
             <X />
           </Button>
         </Link>
-        <AlertDialogTitle className="text-dialog-foreground text-4xl text-center">
-          {t(authConfig[pathname as AuthRoute].title).toUpperCase()}
-        </AlertDialogTitle>
-        {children}
-        <AlertDialogDescription className="flex gap-2 justify-center items-center">
-          <p>{t(authConfig[pathname as AuthRoute].description)}</p>
-          <Link
-            to={authConfig[pathname as AuthRoute].redirectUrl}
-            className="text-dialog-foreground font-bold"
-          >
-            {t(authConfig[pathname as AuthRoute].redirectText)}
-          </Link>
-        </AlertDialogDescription>
-        <SocialMediaList />
-        <LanguageSwitch className="mx-auto" mode="outline" />
+        <div className="flex flex-col gap-5 max-w-sm mx-auto">
+          <AlertDialogTitle className="text-dialog-foreground text-4xl text-center">
+            {t(authConfig[pathname as AuthRoute].title).toUpperCase()}
+          </AlertDialogTitle>
+          {children}
+          <AlertDialogDescription className="flex gap-2 justify-center items-center">
+            <p>{t(authConfig[pathname as AuthRoute].description)}</p>
+            <Link
+              to={authConfig[pathname as AuthRoute].redirectUrl}
+              className="text-dialog-foreground font-bold"
+            >
+              {t(authConfig[pathname as AuthRoute].redirectText)}
+            </Link>
+          </AlertDialogDescription>
+          <SocialMediaList />
+          <LanguageSwitch className="mx-auto" mode="outline" />
+        </div>
       </AlertDialogContent>
     </AlertDialog>
   );
