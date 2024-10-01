@@ -1,6 +1,7 @@
 import { Outlet } from "react-router-dom";
 import { Header, Loading, Modal } from "@/components";
 import { useInitBrand } from "@/lib";
+import { Toaster } from "./ui";
 
 export function Layout() {
   const { isFetching } = useInitBrand();
@@ -10,13 +11,16 @@ export function Layout() {
   }
 
   return (
-    <main className="min-h-dvh flex flex-col w-full">
-      <Modal />
-      <Header />
-      <section className="flex-1">
-        <Outlet />
-      </section>
-      <footer>footer</footer>
-    </main>
+    <>
+      <Toaster />
+      <main className="min-h-dvh flex flex-col w-full">
+        <Modal />
+        <Header />
+        <section className="flex-1">
+          <Outlet />
+        </section>
+        <footer>footer</footer>
+      </main>
+    </>
   );
 }
