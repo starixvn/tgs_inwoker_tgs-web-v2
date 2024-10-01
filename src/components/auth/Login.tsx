@@ -6,9 +6,7 @@ import {
   Form,
   FormField,
   FormItem,
-  FormLabel,
   FormControl,
-  FormDescription,
   FormMessage,
   Button,
   Input,
@@ -20,11 +18,12 @@ import { useState } from "react";
 import { Eye, EyeOffIcon } from "lucide-react";
 import { Link } from "react-router-dom";
 import { ROUTES } from "@/types";
+import { useLogin } from "@/lib";
 
 export const Login = () => {
   const { t } = useTranslation();
+  const { login, isPending, isSuccess } = useLogin();
   const [passwordVisible, setPasswordVisible] = useState(false);
-
   const formSchema = z.object({
     username: z
       .string()
@@ -42,7 +41,7 @@ export const Login = () => {
   });
 
   function onSubmit(values: z.infer<typeof formSchema>) {
-    console.log(values);
+    login(values);
   }
 
   return (
@@ -58,6 +57,7 @@ export const Login = () => {
                   <Input
                     placeholder={t("auth.username.placeholder")}
                     {...field}
+                    autoComplete="username"
                   />
                 </FormControl>
                 <FormMessage />
@@ -75,6 +75,7 @@ export const Login = () => {
                       type={passwordVisible ? "text" : "password"}
                       placeholder={t("auth.password.placeholder")}
                       {...field}
+                      autoComplete="current-password"
                     />
                     <Button
                       className="absolute top-1/2 right-3 transform -translate-y-1/2 w-auto h-auto"

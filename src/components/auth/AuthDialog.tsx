@@ -79,7 +79,7 @@ export const AuthDialog = ({ children }: Props) => {
           </AlertDialogTitle>
           {children}
           <AlertDialogDescription className="flex gap-2 justify-center items-center">
-            <p>{t(authConfig[pathname as AuthRoute].description)}</p>
+            <span>{t(authConfig[pathname as AuthRoute].description)}</span>
             <Link
               to={authConfig[pathname as AuthRoute].redirectUrl}
               className="text-dialog-foreground font-bold"

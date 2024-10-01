@@ -9,6 +9,9 @@ export enum QUERY_KEYS {
   BRAND = "brand",
   SOCIAL_MEDIA = "brand/social",
 
+  //auth
+  LOGIN = "player/login",
+
   //game
   GAME_PROVIDER_LIST = "GameProvider/list",
 }

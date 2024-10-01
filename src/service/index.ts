@@ -17,3 +17,4 @@ export type ApiResponse<T> = Promise<AxiosResponse<T>>;
 export * from "./common";
 export * from "./types";
 export * from "./game";
+export * from "./auth";
