@@ -6,7 +6,7 @@ export type LocalesStore = {
   onChange: (locale: LOCALES) => void;
 };
 
-export const useLocales: ZustandStore<LocalesStore> = create((set) => ({
+export const useStoreLocales: ZustandStore<LocalesStore> = create((set) => ({
   locale: (localStorage.getItem("i18nextLng") as LOCALES) ?? LOCALES.EN,
   onChange: (locale) =>
     set(() => {

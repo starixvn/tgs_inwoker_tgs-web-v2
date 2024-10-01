@@ -7,7 +7,7 @@ export type ModalStore = {
   onOpenChange: (open: boolean) => void;
 };
 
-export const useModal: ZustandStore<ModalStore> = create((set) => ({
+export const useStoreModal: ZustandStore<ModalStore> = create((set) => ({
   open: false,
   onOpenChange: () => set(({ open }) => ({ open: !open })),
   children: null,

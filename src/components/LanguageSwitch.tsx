@@ -7,8 +7,8 @@ import {
   SelectValue,
 } from "@/components/ui";
 import { useTranslation } from "react-i18next";
-import { cn, useInitLanguage, useLocales } from "@/lib";
-import { Loader, Loading } from "@/components";
+import { cn, useInitLanguage, useStoreLocales } from "@/lib";
+import { Loader } from "@/components";
 
 const languageConfig: Record<LOCALES, string> = {
   [LOCALES.EN]: "English",
@@ -34,7 +34,7 @@ type Props = {
 export const LanguageSwitch = ({ className, mode = "ghost" }: Props) => {
   const { languageList, isFetching } = useInitLanguage();
   const { i18n } = useTranslation();
-  const { locale, onChange } = useLocales();
+  const { locale, onChange } = useStoreLocales();
 
   const handleOnChange = (locale: LOCALES) => {
     onChange(locale);

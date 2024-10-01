@@ -1,8 +1,8 @@
 import { AlertDialog, AlertDialogContent } from "@/components/ui";
-import { useModal } from "@/lib";
+import { useStoreModal } from "@/lib";
 
 export const Modal = () => {
-  const { children, open, onOpenChange } = useModal();
+  const { children, open, onOpenChange } = useStoreModal();
 
   return (
     <AlertDialog open={open} onOpenChange={onOpenChange}>
