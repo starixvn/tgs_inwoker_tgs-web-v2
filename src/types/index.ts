@@ -11,5 +11,6 @@ export * from "./timezone";
 export * from "./game";
 export * from "./routes";
 export * from "./socialMedia";
+export * from "./localStorage";
 
 export type GetQueryData<T> = AxiosResponse<T> | undefined;

@@ -1,4 +1,4 @@
-import { LOCALES, ZustandStore } from "@/types";
+import { LOCALES, ZustandStore, LOCAL_STORAGE_KEY } from "@/types";
 import { create } from "zustand";
 
 export type LocalesStore = {
@@ -7,10 +7,11 @@ export type LocalesStore = {
 };
 
 export const useStoreLocales: ZustandStore<LocalesStore> = create((set) => ({
-  locale: (localStorage.getItem("i18nextLng") as LOCALES) ?? LOCALES.EN,
+  locale:
+    (localStorage.getItem(LOCAL_STORAGE_KEY.i18n) as LOCALES) ?? LOCALES.EN,
   onChange: (locale) =>
     set(() => {
-      localStorage.setItem("i18nextLng", locale);
+      localStorage.setItem(LOCAL_STORAGE_KEY.i18n, locale);
       return { locale };
     }),
 }));

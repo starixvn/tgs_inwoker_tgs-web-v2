@@ -17,7 +17,7 @@ import { useTranslation } from "react-i18next";
 import { useState } from "react";
 import { Eye, EyeOffIcon } from "lucide-react";
 import { Link } from "react-router-dom";
-import { ROUTES } from "@/types";
+import { LOCAL_STORAGE_KEY, ROUTES } from "@/types";
 import { useLogin } from "@/lib";
 
 export const Login = () => {
@@ -35,7 +35,7 @@ export const Login = () => {
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
-      username: localStorage.getItem("username") || "",
+      username: localStorage.getItem(LOCAL_STORAGE_KEY.USERNAME) || "",
       password: "",
     },
   });

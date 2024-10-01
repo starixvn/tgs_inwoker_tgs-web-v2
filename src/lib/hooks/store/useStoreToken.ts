@@ -1,4 +1,4 @@
-import { ZustandStore } from "@/types";
+import { ZustandStore, LOCAL_STORAGE_KEY } from "@/types";
 import { create } from "zustand";
 
 export type TokenStore = {
@@ -7,6 +7,6 @@ export type TokenStore = {
 };
 
 export const useStoreToken: ZustandStore<TokenStore> = create((set) => ({
-  token: "",
+  token: localStorage.getItem(LOCAL_STORAGE_KEY.TOKEN) ?? "",
   onChange: (token) => set(() => ({ token })),
 }));
