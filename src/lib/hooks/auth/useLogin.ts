@@ -1,8 +1,8 @@
-import { ApiResponseError, auth, LoginPayload } from "@/service";
 import { useMutation } from "@tanstack/react-query";
+import { useLocation, useNavigate } from "react-router-dom";
+import { ApiResponseError, auth, LoginPayload } from "@/service";
 import { useHandleError, useStoreToken } from "@/lib";
 import { LOCAL_STORAGE_KEY, ROUTES } from "@/types";
-import { useLocation, useNavigate } from "react-router-dom";
 
 export const useLogin = () => {
   const { onChange } = useStoreToken();
