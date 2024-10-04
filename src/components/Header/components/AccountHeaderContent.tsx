@@ -1,6 +1,6 @@
 import { LanguageSwitch } from "@/components";
 import { Button } from "@/components/ui";
-import { usePlayerInfo, useWallet } from "@/lib";
+import { usePlayerInfo, useRWD, useWallet } from "@/lib";
 import { ROUTES } from "@/types";
 import { Inbox, LogOut } from "lucide-react";
 import { useTranslation } from "react-i18next";
@@ -17,9 +17,20 @@ const content: {
 ];
 
 export const AccountHeaderContent = () => {
+  const { isLargeSize } = useRWD();
   const playerInfo = usePlayerInfo();
   const { balance } = useWallet();
   const { t } = useTranslation();
+
+  if (!isLargeSize) {
+    return (
+      <div className="text-header-text flex gap-2 items-center">
+        <Link to={ROUTES.PROFILE}>{playerInfo?.username}</Link>
+        <span>{balance}</span>
+        <LanguageSwitch />
+      </div>
+    );
+  }
 
   return (
     <div className="text-header-text flex gap-2 items-center">

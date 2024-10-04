@@ -24,14 +24,14 @@ const MobileHeader = ({ children }: { children: React.ReactNode }) => {
 export const Header = () => {
   const { token } = useStoreToken();
   const isAuth = !!token;
-  const { isMobile, isDesktop, isLaptop } = useRWD();
+  const { isLargeSize } = useRWD();
   const authChidlren = isAuth ? (
     <AccountHeaderContent />
   ) : (
     <AnonymousHeaderContent />
   );
 
-  if (isMobile) {
+  if (!isLargeSize) {
     return <MobileHeader>{authChidlren}</MobileHeader>;
   }
 
@@ -47,8 +47,8 @@ export const Header = () => {
         {authChidlren}
       </div>
 
-      {(isDesktop || isLaptop) && (
-        <nav className="w-full px-12 py-2 grid gap-4 grid-cols-[auto_1fr] bg-nav-background text-nav-text">
+      {isLargeSize && (
+        <nav className="w-full px-12 py-2 gap-4 flex bg-nav-background text-nav-text">
           <Logo />
           <Nav />
         </nav>

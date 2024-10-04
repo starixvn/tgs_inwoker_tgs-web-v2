@@ -8,7 +8,7 @@ export const Logo = () => {
   const data = qc.getQueryData([QUERY_KEYS.BRAND]) as GetQueryData<GetBrandDto>;
   const brandData = data?.data.data;
   return (
-    <Link to={ROUTES.HOME} className="block w-fit">
+    <Link to={ROUTES.HOME} className="block w-fit shrink-0">
       <img src={brandData?.desktopLogoUrl} alt="logo" className="h-8" />
     </Link>
   );

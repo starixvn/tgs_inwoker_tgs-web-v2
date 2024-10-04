@@ -7,11 +7,17 @@ import { useWindowSize } from "@uidotdev/usehooks";
  */
 export const useRWD = () => {
   const { width } = useWindowSize();
+  const isMobile = width && width < 640;
+  const isTablet = width && width >= 640 && width < 1024;
+  const isLaptop = width && width >= 1024 && width < 1280;
+  const isDesktop = width && width >= 1280;
+  const isLargeSize = isLaptop || isDesktop;
 
   return {
-    isMobile: width && width < 640,
-    isTablet: width && width >= 640 && width < 1024,
-    isLaptop: width && width >= 1024 && width < 1280,
-    isDesktop: width && width >= 1280,
+    isMobile,
+    isTablet,
+    isLaptop,
+    isDesktop,
+    isLargeSize,
   };
 };
