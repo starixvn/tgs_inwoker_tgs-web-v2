@@ -30,6 +30,7 @@ export const Login = () => {
       .min(6, { message: t("auth.username.errorMin") })
       .max(32, { message: t("auth.username.errorMax") }),
     password: z.string().min(1, { message: t("auth.password.errorMin") }),
+    isRemember: z.boolean(),
   });
 
   const form = useForm<z.infer<typeof formSchema>>({
@@ -37,6 +38,8 @@ export const Login = () => {
     defaultValues: {
       username: localStorage.getItem(LOCAL_STORAGE_KEY.USERNAME) || "",
       password: "",
+      isRemember:
+        !!localStorage.getItem(LOCAL_STORAGE_KEY.REMEMBER_ME) || false,
     },
   });
 
@@ -92,15 +95,30 @@ export const Login = () => {
               </FormItem>
             )}
           />
-          <div className="flex justify-between items-center">
-            <Label className="cursor-pointer flex items-center gap-1">
-              <Checkbox />
-              {t("auth.rememberMe")}
-            </Label>
-            <Link to={ROUTES.FORGET_PASSWORD} className="text-primary">
-              {t("auth.forgetPassword")}?
-            </Link>
-          </div>
+          <FormField
+            control={form.control}
+            name="isRemember"
+            render={({ field }) => (
+              <FormItem>
+                <FormControl>
+                  <div className="flex justify-between items-center">
+                    <Label className="cursor-pointer flex items-center gap-1">
+                      <Checkbox
+                        checked={field.value}
+                        onCheckedChange={field.onChange}
+                      />
+                      {t("auth.rememberMe")}
+                    </Label>
+                    <Link to={ROUTES.FORGET_PASSWORD} className="text-primary">
+                      {t("auth.forgetPassword")}?
+                    </Link>
+                  </div>
+                </FormControl>
+                <FormMessage />
+              </FormItem>
+            )}
+          />
+
           <Button type="submit" className="w-full" disabled={isPending}>
             {t("auth.login")}
           </Button>

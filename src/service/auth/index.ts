@@ -6,11 +6,13 @@ import { plateformType } from "@/lib";
 export type LoginPayload = {
   username: string;
   password: string;
+  isRemember: boolean;
 };
 
 const login = (payload: LoginPayload): ApiResponse<LoginDto> => {
   return api.post(QUERY_KEYS.LOGIN, {
-    ...payload,
+    username: payload.username,
+    password: payload.password,
     platformtype: plateformType,
   });
 };

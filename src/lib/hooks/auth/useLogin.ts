@@ -12,10 +12,18 @@ export const useLogin = () => {
 
   const { mutate, isPending } = useMutation({
     mutationFn: (payload: LoginPayload) => auth.login(payload),
-    onSuccess: ({ data }) => {
+    onSuccess: ({ data }, payload) => {
       if (data.token) {
         onChange(data.token);
         localStorage.setItem(LOCAL_STORAGE_KEY.TOKEN, data.token);
+
+        if (payload.isRemember) {
+          localStorage.setItem(LOCAL_STORAGE_KEY.USERNAME, payload.username);
+          localStorage.setItem(LOCAL_STORAGE_KEY.REMEMBER_ME, "true");
+        } else {
+          localStorage.removeItem(LOCAL_STORAGE_KEY.USERNAME);
+          localStorage.removeItem(LOCAL_STORAGE_KEY.REMEMBER_ME);
+        }
       }
 
       if (location.search.includes("?redirectUrl=")) {
