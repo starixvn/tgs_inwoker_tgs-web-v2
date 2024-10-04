@@ -23,7 +23,6 @@ export const useGetPlayerInfo = () => {
       localStorage.removeItem(LOCAL_STORAGE_KEY.TOKEN);
       clearToken();
       handleError(error as ApiResponseError);
-      console.log(data);
     }
   }, [isError]);
 

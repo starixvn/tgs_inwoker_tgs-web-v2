@@ -23,3 +23,4 @@ export * from "./types";
 export * from "./game";
 export * from "./auth";
 export * from "./player";
+export * from "./wallet";

@@ -17,4 +17,7 @@ export enum QUERY_KEYS {
 
   //player
   PLAYER_INFO = "player/info",
+
+  //wallet
+  WALLET = "wallet",
 }
