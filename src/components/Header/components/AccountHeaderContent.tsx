@@ -28,21 +28,8 @@ export const AccountHeaderContent = () => {
     return <Loading />;
   }
 
-  if (!isLargeSize) {
-    return (
-      <div className="text-header-text flex gap-2 items-center">
-        <Link to={ROUTES.PROFILE}>{playerInfo?.username}</Link>
-        <span>{balance}</span>
-        <LanguageSwitch />
-      </div>
-    );
-  }
-
-  return (
-    <div className="text-header-text flex gap-2 items-center">
-      <Link to={ROUTES.PROFILE}>{playerInfo?.username}</Link>
-      <span>{balance}</span>
-      <LanguageSwitch />
+  const renderLargeSizeContent = () => (
+    <>
       {content.map((item) => (
         <Link className="" key={item.url} to={item.url}>
           <Button variant={item.variant}>{t(item.label)}</Button>
@@ -62,6 +49,15 @@ export const AccountHeaderContent = () => {
       >
         <LogOut />
       </Button>
+    </>
+  );
+
+  return (
+    <div className="text-header-text flex gap-2 items-center">
+      <Link to={ROUTES.PROFILE}>{playerInfo?.username}</Link>
+      <span>{balance}</span>
+      <LanguageSwitch />
+      {isLargeSize && renderLargeSizeContent()}
     </div>
   );
 };
