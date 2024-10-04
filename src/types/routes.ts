@@ -3,6 +3,7 @@ export enum ROUTES {
   HOME = "/",
   VIP = "/vip",
   PROMOTION = "/promotion",
+  PROFILE = "/profile",
 
   //auth
   LOGIN = "/login",

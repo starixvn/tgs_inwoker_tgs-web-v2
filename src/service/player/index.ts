@@ -10,3 +10,5 @@ const getPlayerInfo = (token: string): ApiResponse<GetPlayerInfoDto> => {
 export const player = {
   getPlayerInfo,
 };
+
+export * from "./types";
