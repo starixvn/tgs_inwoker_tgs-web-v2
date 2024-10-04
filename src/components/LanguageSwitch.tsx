@@ -7,8 +7,7 @@ import {
   SelectValue,
 } from "@/components/ui";
 import { useTranslation } from "react-i18next";
-import { cn, useInitLanguage, useStoreLocales } from "@/lib";
-import { Loader } from "@/components";
+import { cn, useLanguageList, useStoreLocales } from "@/lib";
 
 const languageConfig: Record<LOCALES, string> = {
   [LOCALES.EN]: "English",
@@ -28,11 +27,8 @@ type Props = {
   mode?: "outline" | "ghost";
 };
 
-/**
- * @todo 加入動態語系
- */
 export const LanguageSwitch = ({ className, mode = "ghost" }: Props) => {
-  const { languageList, isFetching } = useInitLanguage();
+  const languageList = useLanguageList();
   const { i18n } = useTranslation();
   const { locale, onChange } = useStoreLocales();
 
@@ -40,10 +36,6 @@ export const LanguageSwitch = ({ className, mode = "ghost" }: Props) => {
     onChange(locale);
     i18n.changeLanguage(locale);
   };
-
-  if (isFetching) {
-    return <Loader />;
-  }
 
   const modeClass = {
     outline: "",
@@ -59,7 +51,7 @@ export const LanguageSwitch = ({ className, mode = "ghost" }: Props) => {
           </SelectValue>
         </SelectTrigger>
         <SelectContent>
-          {languageList.map(({ culturecode }) => (
+          {languageList?.map(({ culturecode }) => (
             <SelectItem key={culturecode} value={culturecode}>
               {languageConfig[culturecode]}
             </SelectItem>

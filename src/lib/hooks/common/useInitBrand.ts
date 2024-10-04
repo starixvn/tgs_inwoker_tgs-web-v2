@@ -1,7 +1,7 @@
 import { common } from "@/service";
 import { QUERY_KEYS } from "@/types";
 import { useQuery } from "@tanstack/react-query";
-import { useGetPlayerInfo, useGetWallet } from "@/lib";
+import { useGetPlayerInfo, useGetWallet, useInitLanguage } from "@/lib";
 
 export const useInitBrand = () => {
   const { isFetching } = useQuery({
@@ -10,8 +10,13 @@ export const useInitBrand = () => {
   });
   const getPlayerInfo = useGetPlayerInfo();
   const getWallet = useGetWallet();
+  const initLanguage = useInitLanguage();
 
   return {
-    isFetching: isFetching || getPlayerInfo.isFetching || getWallet.isFetching,
+    isFetching:
+      isFetching ||
+      getPlayerInfo.isFetching ||
+      getWallet.isFetching ||
+      initLanguage.isFetching,
   };
 };
