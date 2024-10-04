@@ -34,5 +34,14 @@
   },
   "common": {
     "promotion": "Promotion"
+  },
+  "deposit": {
+    "title": "Deposit"
+  },
+  "transfer": {
+    "title": "Transfer"
+  },
+  "withdraw": {
+    "title": "Withdraw"
   }
 }

@@ -4,6 +4,10 @@ export enum ROUTES {
   VIP = "/vip",
   PROMOTION = "/promotion",
   PROFILE = "/profile",
+  TRANSFER = "/transfer",
+  DEPOSIT = "/deposit",
+  WITHDRAWAL = "/withdrawal",
+  INBOX = "/inbox",
 
   //auth
   LOGIN = "/login",
