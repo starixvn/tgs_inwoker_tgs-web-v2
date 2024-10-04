@@ -1,5 +1,5 @@
-import { ApiResponse, api } from "@/service";
-import { LoginDto } from "./types";
+import { ApiResponse, api, getHeaders } from "@/service";
+import { LoginDto, LogoutDto } from "./types";
 import { QUERY_KEYS } from "@/types";
 import { plateformType } from "@/lib";
 
@@ -17,6 +17,12 @@ const login = (payload: LoginPayload): ApiResponse<LoginDto> => {
   });
 };
 
+const logout = (token: string): ApiResponse<LogoutDto> => {
+  const headers = getHeaders(token);
+  return api.delete(QUERY_KEYS.LOGOUT, headers);
+};
+
 export const auth = {
   login,
+  logout,
 };

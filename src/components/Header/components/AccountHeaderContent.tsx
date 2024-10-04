@@ -1,6 +1,7 @@
-import { LanguageSwitch } from "@/components";
+import { LanguageSwitch, Loading } from "@/components";
 import { Button } from "@/components/ui";
 import { usePlayerInfo, useRWD, useWallet } from "@/lib";
+import { useLogout } from "@/lib/hooks/auth/useLogout";
 import { ROUTES } from "@/types";
 import { Inbox, LogOut } from "lucide-react";
 import { useTranslation } from "react-i18next";
@@ -21,6 +22,11 @@ export const AccountHeaderContent = () => {
   const playerInfo = usePlayerInfo();
   const { balance } = useWallet();
   const { t } = useTranslation();
+  const { logout, isPending } = useLogout();
+
+  if (isPending) {
+    return <Loading />;
+  }
 
   if (!isLargeSize) {
     return (
@@ -47,7 +53,13 @@ export const AccountHeaderContent = () => {
           <Inbox />
         </Button>
       </Link>
-      <Button size="icon" variant="ghost" onClick={() => {}}>
+      <Button
+        size="icon"
+        variant="ghost"
+        onClick={() => {
+          logout();
+        }}
+      >
         <LogOut />
       </Button>
     </div>

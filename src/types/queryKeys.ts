@@ -11,6 +11,7 @@ export enum QUERY_KEYS {
 
   //auth
   LOGIN = "player/login",
+  LOGOUT = "player/logout",
 
   //game
   GAME_PROVIDER_LIST = "GameProvider/list",
