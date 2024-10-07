@@ -51,7 +51,7 @@ export const AuthDialog = ({ children }: Props) => {
     <AlertDialog open>
       <AlertDialogContent className="gap-5 bg-dialog-background sm:max-w-xl max-w-full h-full sm:h-auto">
         <CloseButton />
-        <div className="flex flex-col gap-5 max-w-sm mx-auto">
+        <div className="flex flex-col gap-5 max-w-sm mx-auto w-full">
           <AlertDialogTitle className="text-dialog-foreground text-4xl text-center">
             {t(authConfig[pathname as AuthRoute].title).toUpperCase()}
           </AlertDialogTitle>

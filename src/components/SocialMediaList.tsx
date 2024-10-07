@@ -1,6 +1,6 @@
 import { useSocialMedia } from "@/lib";
 import { SOCIAL_MEDIA } from "@/types";
-import { Loader } from "./Loader";
+import { Skeleton } from "./ui";
 
 /**
  * @key SOCIAL_MEDIA
@@ -20,7 +20,7 @@ export const SocialMediaList = () => {
   const { isFetching, socialMediaList } = useSocialMedia();
 
   if (isFetching) {
-    return <Loader />;
+    return <Skeleton className="h-10 w-full" />;
   }
 
   return (
