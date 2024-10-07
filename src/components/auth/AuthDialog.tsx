@@ -4,7 +4,7 @@ import { useTranslation } from "react-i18next";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 
 import { ROUTES } from "@/types";
-import { LanguageSwitch, SocialMediaList } from "@/components";
+import { CloseButton, LanguageSwitch, SocialMediaList } from "@/components";
 import {
   AlertDialog,
   AlertDialogContent,
@@ -47,32 +47,13 @@ const authConfig: Record<AuthRoute, Config> = {
 };
 
 export const AuthDialog = ({ children }: Props) => {
-  const navigate = useNavigate();
   const { pathname } = useLocation();
   const { t } = useTranslation();
 
-  useEffect(() => {
-    const handleKeyDown = (event: KeyboardEvent) => {
-      if (event.key === "Escape") {
-        navigate(ROUTES.HOME);
-      }
-    };
-
-    document.addEventListener("keydown", handleKeyDown);
-
-    return () => {
-      document.removeEventListener("keydown", handleKeyDown);
-    };
-  }, []);
-
   return (
     <AlertDialog open>
-      <AlertDialogContent className="gap-5 bg-dialog-background">
-        <Link to={ROUTES.HOME} className="block w-fit ml-auto">
-          <Button size="icon" variant="ghost">
-            <X />
-          </Button>
-        </Link>
+      <AlertDialogContent className="gap-5 bg-dialog-background sm:max-w-xl max-w-full h-full sm:h-auto">
+        <CloseButton />
         <div className="flex flex-col gap-5 max-w-sm mx-auto">
           <AlertDialogTitle className="text-dialog-foreground text-4xl text-center">
             {t(authConfig[pathname as AuthRoute].title).toUpperCase()}
