@@ -5,7 +5,8 @@
     "forgetPassword": "Forget Password",
     "description": {
       "login": "Don't have an account?",
-      "register": "Already have an account?"
+      "register": "Already have an account?",
+      "forgetPassword": "Already have an account?"
     },
     "username": {
       "placeholder": "Username",
@@ -14,9 +15,25 @@
     },
     "password": {
       "placeholder": "Password",
-      "errorMin": "Password is required."
+      "errorMin": "Password is required.",
+      "errorMatch": "Passwords must match",
+      "confirmPassword": "Confirm Password"
     },
-    "rememberMe": "Remember Me"
+    "rememberMe": "Remember Me",
+    "invitaionCode": {
+      "placeholder": "Invitation Code",
+      "errorMin": "Invitation Code is required."
+    },
+    "terms": "I confirm that I am at least 18 years old and have read and accepted the policy, privacy statement, terms and conditions of this website.",
+    "verifyCode": {
+      "placeholder": "Please enter verfication code",
+      "errorMin": "Verify Code is required."
+    },
+    "sendCode": "Send Code",
+    "phoneNumber": {
+      "placeholder": "Please enter your phone number",
+      "errorMin": "Phone Number is required."
+    }
   },
   "game": {
     "gameType": {
@@ -33,7 +50,8 @@
     }
   },
   "common": {
-    "promotion": "Promotion"
+    "promotion": "Promotion",
+    "submit": "Submit"
   },
   "deposit": {
     "title": "Deposit"
