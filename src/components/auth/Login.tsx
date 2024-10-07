@@ -91,7 +91,7 @@ export const Login = () => {
                       />
                       {t("auth.rememberMe")}
                     </Label>
-                    <Link to={ROUTES.FORGET_PASSWORD} className="text-primary">
+                    <Link to={ROUTES.FORGET_PASSWORD} className="text-dialog-foreground">
                       {t("auth.forgetPassword")}?
                     </Link>
                   </div>
