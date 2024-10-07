@@ -188,7 +188,7 @@ export const Register = () => {
               </FormItem>
             )}
           />
-          // @todo add disabed state
+          {/* // @todo add disabed state */}
           <Button type="submit" className="w-full" disabled={false}>
             {t("auth.register")}
           </Button>

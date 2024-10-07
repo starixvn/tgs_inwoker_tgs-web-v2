@@ -5,7 +5,8 @@
     "forgetPassword": "Forget Password",
     "description": {
       "login": "Don't have an account?",
-      "register": "Already have an account?"
+      "register": "Already have an account?",
+      "forgetPassword": "Already have an account?"
     },
     "username": {
       "placeholder": "Username",
@@ -49,7 +50,8 @@
     }
   },
   "common": {
-    "promotion": "Promotion"
+    "promotion": "Promotion",
+    "submit": "Submit"
   },
   "deposit": {
     "title": "Deposit"
