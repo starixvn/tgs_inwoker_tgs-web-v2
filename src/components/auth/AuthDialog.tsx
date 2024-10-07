@@ -8,6 +8,7 @@ import {
   AlertDialogContent,
   AlertDialogDescription,
   AlertDialogTitle,
+  ScrollArea,
 } from "@/components/ui";
 
 type Props = {
@@ -51,23 +52,25 @@ export const AuthDialog = ({ children }: Props) => {
     <AlertDialog open>
       <AlertDialogContent className="gap-5 bg-dialog-background sm:max-w-xl max-w-full h-full sm:h-auto">
         <CloseButton />
-        <div className="flex flex-col gap-5 max-w-sm mx-auto w-full">
-          <AlertDialogTitle className="text-dialog-foreground text-4xl text-center">
-            {t(authConfig[pathname as AuthRoute].title).toUpperCase()}
-          </AlertDialogTitle>
-          {children}
-          <AlertDialogDescription className="flex gap-2 justify-center items-center">
-            <span>{t(authConfig[pathname as AuthRoute].description)}</span>
-            <Link
-              to={authConfig[pathname as AuthRoute].redirectUrl}
-              className="text-dialog-foreground font-bold"
-            >
-              {t(authConfig[pathname as AuthRoute].redirectText)}
-            </Link>
-          </AlertDialogDescription>
-          <SocialMediaList />
-          <LanguageSwitch className="mx-auto" mode="outline" />
-        </div>
+        <ScrollArea>
+          <div className="flex flex-col gap-5 max-w-sm mx-auto w-full">
+            <AlertDialogTitle className="text-dialog-foreground text-4xl text-center">
+              {t(authConfig[pathname as AuthRoute].title).toUpperCase()}
+            </AlertDialogTitle>
+            {children}
+            <AlertDialogDescription className="flex gap-2 justify-center items-center">
+              <span>{t(authConfig[pathname as AuthRoute].description)}</span>
+              <Link
+                to={authConfig[pathname as AuthRoute].redirectUrl}
+                className="text-dialog-foreground font-bold"
+              >
+                {t(authConfig[pathname as AuthRoute].redirectText)}
+              </Link>
+            </AlertDialogDescription>
+            <SocialMediaList />
+            <LanguageSwitch className="mx-auto" mode="outline" />
+          </div>
+        </ScrollArea>
       </AlertDialogContent>
     </AlertDialog>
   );

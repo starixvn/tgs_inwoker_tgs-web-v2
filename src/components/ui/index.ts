@@ -10,3 +10,4 @@ export * from "./checkbox";
 export * from "./toaster";
 export * from "./toast";
 export * from "./skeleton";
+export * from "./scroll-area";
