@@ -4,16 +4,15 @@ import { game } from "@/service";
 import { QUERY_KEYS } from "@/types";
 import { useBrandConfig } from "@/lib";
 
-export const useGameProvider = () => {
+export const useGetGameProvider = () => {
   const { currency } = useBrandConfig();
 
-  const { isFetching, data } = useQuery({
+  const { isFetching } = useQuery({
     queryKey: [QUERY_KEYS.GAME_PROVIDER_LIST, currency],
     queryFn: () => game.getProviderList(currency),
   });
 
   return {
     isFetching,
-    providerList: data ? data.data.data : [],
   };
 };

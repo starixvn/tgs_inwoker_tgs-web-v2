@@ -30,7 +30,7 @@ export type NavItem = {
   isHoverCard: boolean;
 };
 
-export const useGetNavItemList = (providerList: ProviderDto[]): NavItem[] => {
+export const useGetNavItemList = (providerList?: ProviderDto[]): NavItem[] => {
   const { t } = useTranslation();
   const navItemList: NavItem[] = [];
 
@@ -49,7 +49,7 @@ export const useGetNavItemList = (providerList: ProviderDto[]): NavItem[] => {
   };
 
   for (const gameTypeItem of gameTypeList) {
-    if (providerList.length) {
+    if (providerList?.length) {
       const hasData = providerList.filter((provider) => {
         //因虛擬體育是歸類在體育底下,體育分類有無資料的判斷要加上虛擬體育
         if (gameTypeItem.gameType === GAME_TYPE_CODE.SPORTS) {

@@ -12,9 +12,9 @@ const content: {
   label: string;
   variant?: "secondary";
 }[] = [
-  { url: ROUTES.TRANSFER, label: "transfer.title", variant: "secondary" },
-  { url: ROUTES.DEPOSIT, label: "deposit.title" },
-  { url: ROUTES.WITHDRAWAL, label: "withdraw.title" },
+  { url: ROUTES.TRANSFER, label: "transfer.title" },
+  { url: ROUTES.DEPOSIT, label: "deposit.title", variant: "secondary" },
+  { url: ROUTES.WITHDRAWAL, label: "withdraw.title", variant: "secondary" },
 ];
 
 export const AccountHeaderContent = () => {

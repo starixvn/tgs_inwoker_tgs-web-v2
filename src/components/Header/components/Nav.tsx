@@ -1,16 +1,12 @@
-import { Loading, HoverCard } from "@/components";
+import { HoverCard } from "@/components";
 import { Button } from "@/components/ui";
 import { useGameProvider, useGetNavItemList } from "@/lib";
 import { Link } from "react-router-dom";
 import { GameProviderList } from "./GameProviderList";
 
 export const Nav = () => {
-  const { providerList, isFetching } = useGameProvider();
+  const providerList = useGameProvider();
   const navItemList = useGetNavItemList(providerList);
-
-  if (isFetching) {
-    return <Loading />;
-  }
 
   return (
     <div className="w-full flex gap-1">
