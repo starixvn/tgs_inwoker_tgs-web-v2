@@ -59,7 +59,10 @@
     --nav-background: 0 0 100%;
     --nav-text: 0 0 28%;
 
-    --input: 0 0% 100%;
+    --input-background: 0 0% 100%;
+    --input-foreground: 0 0 0;
+    --input-border: 0 0% 100%;
+
     /* button */
     --button-primary-text: 0 0% 100%;
     --button-primary-background: 31 100 65%;
@@ -125,7 +128,10 @@
     --dialog-text: 0 0 100%;
     --dialog-foreground: 210 63% 51%;
 
-    --input: 0 0% 100%;
+    --input-background: 0 0% 100%;
+    --input-foreground: 0 0 0;
+    --input-border: 0 0% 100%;
+
     --border: 0 0% 100%;
 
     /* 未設定 */

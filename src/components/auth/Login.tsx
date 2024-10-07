@@ -73,7 +73,7 @@ export const Login = () => {
             render={({ field }) => (
               <FormItem>
                 <FormControl>
-                  <div className="relative">
+                  <div className="relative text-input-foreground">
                     <Input
                       type={passwordVisible ? "text" : "password"}
                       placeholder={t("auth.password.placeholder")}
