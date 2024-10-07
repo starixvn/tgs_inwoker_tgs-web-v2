@@ -1,12 +1,11 @@
-import { ApiResponseError, player } from "@/service";
+import { player } from "@/service";
 import { useQuery } from "@tanstack/react-query";
 import { useHandleError, useStoreToken } from "@/lib";
 import { LOCAL_STORAGE_KEY, QUERY_KEYS } from "@/types";
-import { useEffect } from "react";
 
 export const useGetPlayerInfo = () => {
   const { token, clearToken } = useStoreToken();
-  const { handleError } = useHandleError();
+
   const { isFetching, data, isError, error } = useQuery({
     queryKey: [QUERY_KEYS.PLAYER_INFO, token],
     queryFn: () => {
@@ -18,13 +17,16 @@ export const useGetPlayerInfo = () => {
     },
   });
 
-  useEffect(() => {
-    if (isError) {
-      localStorage.removeItem(LOCAL_STORAGE_KEY.TOKEN);
-      clearToken();
-      handleError(error as ApiResponseError);
-    }
-  }, [isError]);
+  const onError = () => {
+    localStorage.removeItem(LOCAL_STORAGE_KEY.TOKEN);
+    clearToken();
+  };
+
+  useHandleError({
+    onError,
+    isError,
+    error,
+  });
 
   return {
     data: data ? data?.data.data : undefined,

@@ -1,11 +1,9 @@
 import { useHandleError, useStoreToken } from "@/lib";
-import { ApiResponseError, wallet } from "@/service";
+import { wallet } from "@/service";
 import { QUERY_KEYS } from "@/types";
 import { useQuery } from "@tanstack/react-query";
-import { useEffect } from "react";
 
 export const useGetWallet = () => {
-  const { handleError } = useHandleError();
   const { token } = useStoreToken();
   const { data, isFetching, isError, error } = useQuery({
     queryKey: [QUERY_KEYS.WALLET, token],
@@ -18,11 +16,10 @@ export const useGetWallet = () => {
     },
   });
 
-  useEffect(() => {
-    if (isError) {
-      handleError(error as ApiResponseError);
-    }
-  }, [isError]);
+  useHandleError({
+    isError,
+    error,
+  });
 
   return {
     data,

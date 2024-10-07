@@ -5,11 +5,12 @@ import {
   useGetGameProvider,
   useGetPlayerInfo,
   useGetWallet,
+  useHandleError,
   useInitLanguage,
 } from "@/lib";
 
 export const useInitBrand = () => {
-  const { isFetching } = useQuery({
+  const { isFetching, isError, error } = useQuery({
     queryKey: [QUERY_KEYS.BRAND],
     queryFn: () => common.getBrand(),
   });
@@ -17,6 +18,11 @@ export const useInitBrand = () => {
   const getWallet = useGetWallet();
   const initLanguage = useInitLanguage();
   const getGameProvider = useGetGameProvider();
+
+  useHandleError({
+    isError,
+    error,
+  });
 
   return {
     isFetching:
