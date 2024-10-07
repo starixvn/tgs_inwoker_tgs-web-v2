@@ -5,6 +5,7 @@ export interface TemplateConfig {
   timeZone: TIMEZONE;
   language: LOCALES;
   currency: CURRENCY;
+  phonePrefix: `+${number}`;
 }
 
 /**
@@ -19,18 +20,21 @@ export const brandConfig: Record<BRAND_CODE, TemplateConfig> = {
     timeZone: TIMEZONE.TW,
     language: LOCALES.EN,
     currency: CURRENCY.USD,
+    phonePrefix: "+886",
   },
   [BRAND_CODE.MOPH]: {
     template: TEMPLATE.TWENTY_NIGHT,
     timeZone: TIMEZONE.PH,
     language: LOCALES.PH,
     currency: CURRENCY.PHP,
+    phonePrefix: "+63",
   },
   [BRAND_CODE.SBO]: {
     template: TEMPLATE.THIRTY_SIX,
     timeZone: TIMEZONE.ID,
     language: LOCALES.ID,
     currency: CURRENCY.IDR,
+    phonePrefix: "+62",
   },
 };
 

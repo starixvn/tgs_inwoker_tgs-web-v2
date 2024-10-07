@@ -14,37 +14,55 @@ import {
   Label,
 } from "@/components/ui";
 import { useTranslation } from "react-i18next";
-import { useState } from "react";
-import { Eye, EyeOffIcon } from "lucide-react";
-import { Link } from "react-router-dom";
-import { LOCAL_STORAGE_KEY, ROUTES } from "@/types";
-import { useLogin } from "@/lib";
+import { useBrandConfig } from "@/lib";
+import { PasswordInput } from "./PasswordInput";
 
 export const Register = () => {
   const { t } = useTranslation();
-  const { login, isPending } = useLogin();
-  const [passwordVisible, setPasswordVisible] = useState(false);
+  const brandConfig = useBrandConfig();
   const formSchema = z.object({
     username: z
       .string()
       .min(6, { message: t("auth.username.errorMin") })
       .max(32, { message: t("auth.username.errorMax") }),
     password: z.string().min(1, { message: t("auth.password.errorMin") }),
-    isRemember: z.boolean(),
+    confirmPassword: z
+      .string()
+      .min(1, { message: t("auth.password.errorMin") })
+      .refine(
+        (data) => {
+          // data must equal to password
+          if (data !== form.getValues().password) {
+            return false;
+          }
+
+          return true;
+        },
+        {
+          message: t("auth.password.errorMatch"),
+        },
+      ),
+    phoneNumber: z.string().min(1, { message: t("auth.phoneNumber.errorMin") }),
+    verifyCode: z.string().min(1, { message: t("auth.verifyCode.errorMin") }),
+    invitaionCode: z.string().optional(),
+    isAcceptTerms: z.boolean(),
   });
 
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
-      username: localStorage.getItem(LOCAL_STORAGE_KEY.USERNAME) || "",
+      username: "",
       password: "",
-      isRemember:
-        !!localStorage.getItem(LOCAL_STORAGE_KEY.REMEMBER_ME) || false,
+      phoneNumber: "",
+      confirmPassword: "",
+      invitaionCode: "",
+      verifyCode: "",
+      isAcceptTerms: false,
     },
   });
 
   function onSubmit(values: z.infer<typeof formSchema>) {
-    login(values);
+    console.log(values);
   }
 
   return (
@@ -73,21 +91,78 @@ export const Register = () => {
             render={({ field }) => (
               <FormItem>
                 <FormControl>
-                  <div className="relative text-input-foreground">
+                  <PasswordInput {...field} />
+                </FormControl>
+                <FormMessage />
+              </FormItem>
+            )}
+          />
+          <FormField
+            control={form.control}
+            name="confirmPassword"
+            render={({ field }) => (
+              <FormItem>
+                <FormControl>
+                  <PasswordInput
+                    {...field}
+                    placeholder="auth.password.confirmPassword"
+                  />
+                </FormControl>
+                <FormMessage />
+              </FormItem>
+            )}
+          />
+          <FormField
+            control={form.control}
+            name="invitaionCode"
+            render={({ field }) => (
+              <FormItem>
+                <FormControl>
+                  <Input
+                    placeholder={t("auth.invitaionCode.placeholder")}
+                    {...field}
+                  />
+                </FormControl>
+                <FormMessage />
+              </FormItem>
+            )}
+          />
+          <FormField
+            control={form.control}
+            name="phoneNumber"
+            render={({ field }) => (
+              <FormItem>
+                <FormControl>
+                  <div className="grid grid-cols-[100px_1fr] gap-2">
                     <Input
-                      type={passwordVisible ? "text" : "password"}
-                      placeholder={t("auth.password.placeholder")}
-                      {...field}
-                      autoComplete="current-password"
+                      className="w-full"
+                      disabled
+                      value={brandConfig.phonePrefix}
                     />
-                    <Button
-                      className="absolute top-1/2 right-3 transform -translate-y-1/2 w-auto h-auto"
-                      type="button"
-                      size="icon"
-                      variant="ghost"
-                      onClick={() => setPasswordVisible(!passwordVisible)}
-                    >
-                      {passwordVisible ? <EyeOffIcon /> : <Eye />}
+                    <Input
+                      placeholder={t("auth.phoneNumber.placeholder")}
+                      {...field}
+                    />
+                  </div>
+                </FormControl>
+                <FormMessage />
+              </FormItem>
+            )}
+          />
+          <FormField
+            control={form.control}
+            name="verifyCode"
+            render={({ field }) => (
+              <FormItem>
+                <FormControl>
+                  <div className="flex justify-between gap-2">
+                    <Input
+                      className="w-full"
+                      placeholder={t("auth.verifyCode.placeholder")}
+                      {...field}
+                    />
+                    <Button type="button" onClick={() => {}}>
+                      {t("auth.sendCode")}
                     </Button>
                   </div>
                 </FormControl>
@@ -97,30 +172,25 @@ export const Register = () => {
           />
           <FormField
             control={form.control}
-            name="isRemember"
+            name="isAcceptTerms"
             render={({ field }) => (
               <FormItem>
                 <FormControl>
-                  <div className="flex justify-between items-center">
-                    <Label className="cursor-pointer flex items-center gap-1">
-                      <Checkbox
-                        checked={field.value}
-                        onCheckedChange={field.onChange}
-                      />
-                      {t("auth.rememberMe")}
-                    </Label>
-                    <Link to={ROUTES.FORGET_PASSWORD} className="text-primary">
-                      {t("auth.forgetPassword")}?
-                    </Link>
-                  </div>
+                  <Label className="cursor-pointer flex items-start gap-2 text-xs">
+                    <Checkbox
+                      checked={field.value}
+                      onCheckedChange={field.onChange}
+                    />
+                    {t("auth.terms")}
+                  </Label>
                 </FormControl>
                 <FormMessage />
               </FormItem>
             )}
           />
-
-          <Button type="submit" className="w-full" disabled={isPending}>
-            {t("auth.login")}
+          // @todo add disabed state
+          <Button type="submit" className="w-full" disabled={false}>
+            {t("auth.register")}
           </Button>
         </form>
       </Form>

@@ -1,7 +1,5 @@
-import { X } from "lucide-react";
-import { useEffect } from "react";
 import { useTranslation } from "react-i18next";
-import { Link, useLocation, useNavigate } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 
 import { ROUTES } from "@/types";
 import { CloseButton, LanguageSwitch, SocialMediaList } from "@/components";
@@ -10,7 +8,6 @@ import {
   AlertDialogContent,
   AlertDialogDescription,
   AlertDialogTitle,
-  Button,
 } from "@/components/ui";
 
 type Props = {
