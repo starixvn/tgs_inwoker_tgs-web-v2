@@ -1,9 +1,9 @@
-FROM node:20.0.0-stretch-slim AS dependencies
+FROM node:20.18.0-slim AS dependencies
 WORKDIR /app
 COPY package.json yarn.lock ./
 RUN yarn install --frozen-lockfile
 
-FROM node:20.0.0-stretch-slim AS builder
+FROM node:20.18.0-slim AS builder
 WORKDIR /app
 COPY --from=dependencies /node_modules ./node_modules
 COPY . .
