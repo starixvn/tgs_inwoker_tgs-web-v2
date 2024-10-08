@@ -5,7 +5,7 @@ RUN yarn install --frozen-lockfile
 
 FROM node:20.18.0-slim AS builder
 WORKDIR /app
-COPY --from=dependencies /node_modules ./node_modules
+COPY --from=dependencies /app/node_modules ./node_modules
 COPY . .
 RUN yarn build .
 
