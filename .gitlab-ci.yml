@@ -45,23 +45,10 @@ build-job:       # This job runs in the build stage, which runs first.
 
       yarn add -D @nx/react@17.0.2
 
-      yarn docker-build:latest
-
-      docker image ls  
-      image_count=$(docker image ls | wc  -l)
-
-      if [[ $image_count -gt 1 ]]; then
-          docker image ls | grep pgtgs/tgs-web | awk '{print $1":"$2}' > image.txt
-          cat image.txt
-          image_list=$(docker image ls | grep pgtgs/tgs-web | awk '{print $1":"$2}')
-
-          for image in $image_list; do
-              echo "image=$image"
-              docker push $image
-          done
-      fi
-
-
+      imageTag=lobby:`date +%Y-%m%d-%H%M`
+      docker build . -t pgtgs/$imageTag
+      docker build pgtgs/$imageTag
+    
 unit-test-job:   # This job runs in the test stage.
   stage: test    # It only starts when the job in the build stage completes successfully.
   script:
