@@ -1,10 +1,9 @@
 import { Outlet } from "react-router-dom";
 import { Footer, Header, Loading, Modal } from "@/components";
-import { useInitBrand, useRWD } from "@/lib";
+import { useInitBrand } from "@/lib";
 import { Toaster } from "./ui";
 
 export function Layout() {
-  const { isLargeSize } = useRWD();
   const { isFetching } = useInitBrand();
 
   if (isFetching) {
@@ -20,7 +19,7 @@ export function Layout() {
         <section className="flex-1">
           <Outlet />
         </section>
-        {isLargeSize && <Footer />}
+        <Footer />
       </main>
     </>
   );

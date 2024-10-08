@@ -12,6 +12,7 @@ export const useRWD = () => {
   const isLaptop = width && width >= 1024 && width < 1280;
   const isDesktop = width && width >= 1280;
   const isLargeSize = isLaptop || isDesktop;
+  const isSmallSize = isMobile || isTablet;
 
   return {
     isMobile,
@@ -19,5 +20,6 @@ export const useRWD = () => {
     isLaptop,
     isDesktop,
     isLargeSize,
+    isSmallSize,
   };
 };
