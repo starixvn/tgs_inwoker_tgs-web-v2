@@ -45,6 +45,8 @@ deploy-dev:
   only:
     - main
   when: on_success
+  before_script:
+    - sudo apt install gettext
   script:
     - | 
       if [[ $domain != "" && $brand != "" ]]; then 
