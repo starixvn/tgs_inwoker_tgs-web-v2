@@ -51,7 +51,16 @@
   },
   "common": {
     "promotion": "Promotion",
-    "submit": "Submit"
+    "submit": "Submit",
+    "privacyPolicy": "Privacy Policy",
+    "termsAndConditions": "Terms and Conditions",
+    "responsibleGaming": "Responsible Gaming",
+    "gamingLicense": "Gaming License",
+    "followUs": "Follow Us",
+    "quickLinks": "Quick Links",
+    "customerService": "Chat Customer Service",
+    "faq": "FAQs",
+    "partners": "Partners"
   },
   "deposit": {
     "title": "Deposit"
