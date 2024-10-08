@@ -56,7 +56,7 @@ deploy-dev:
         helm template $brand deployment -f values.yaml -n ${namespace}
         helm template $brand deployment -f values.yaml -n ${namespace} | kubectl apply -f - 
       else 
-         lobbies="${env}_v2"
+         lobbies="${namespace}_v2"
          echo "lobbies=${!lobbies}"  
          IFS=',' read -ra array <<< "${!lobbies}"
          for lb in "${array[@]}"; do
