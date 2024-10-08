@@ -1,5 +1,5 @@
 import { Outlet } from "react-router-dom";
-import { Footer, Header, Loading, Modal } from "@/components";
+import { Footer, Head, Header, Loading, Modal } from "@/components";
 import { useInitBrand } from "@/lib";
 import { Toaster } from "./ui";
 
@@ -12,6 +12,7 @@ export function Layout() {
 
   return (
     <>
+      <Head />
       <Toaster />
       <main className="min-h-dvh flex flex-col w-full">
         <Modal />
