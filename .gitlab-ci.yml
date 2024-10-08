@@ -40,7 +40,7 @@ deploy-dev:
   tags:
     - dev
   needs:
-    - build-job
+    - job: build-job
       artifacts: true
   only:
     - main
@@ -70,9 +70,9 @@ deploy-staging:
   tags:
     - staging
   needs:
-    - build-job
-    - deploy-dev
+    - job: deploy-dev
       artifacts: true
+    - build-job
   only:
     - main
   when: on_success
@@ -90,9 +90,9 @@ deploy-prod:
   tags:
     - prod
   needs:
-    - build-job
-    - deploy-staging
+    - job: build-job
       artifacts: true
+    - deploy-staging
   only:
     - main
   when: on_success
