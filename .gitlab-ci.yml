@@ -3,11 +3,15 @@ stages:          # List of stages for jobs, and their order of execution
   - deploy-dev
   - deploy-staging
   - deploy-prod
-
+variables:
+  imageRepository: pgtgs
 build-job:       # This job runs in the build stage, which runs first.
   stage: build
   tags:
     - local-build
+  artifacts:
+    paths:
+      - image.txt
   script:
     - |
       curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.1/install.sh | bash
@@ -20,9 +24,10 @@ build-job:       # This job runs in the build stage, which runs first.
       cp -a dist/. public/
 
       imageTag=lobby:`date +%Y-%m%d-%H%M`
-      docker build . -t pgtgs/$imageTag
+      docker build . -t $imageRepository/$imageTag
       docker image ls
-      docker push pgtgs/$imageTag
+      echo $imageTag > image.txt
+      docker push $imageRepository/$imageTag
 
 deploy-dev:
   image: 
@@ -36,11 +41,23 @@ deploy-dev:
     - dev
   needs:
     - build-job
+      artifacts: true
   only:
     - main
   when: on_success
   script:
-    - deploy_k8s $TgsSettingKey $HelmTemplateFolderName $namespace
+    - | 
+      if [[ $domain != "" && $brand != "" ]]; then 
+        export tag=$(cat image.txt)
+        echo "image=$image"
+        echo "tag=$tag"
+
+        envsubst < ./deployment/values-${namespace}.yaml > values.yaml
+        helm template $brand deployment -f values.yaml -n ${namespace}
+        helm template $brand deployment -f values.yaml -n ${namespace} | kubectl apply -f - 
+      else 
+        echo "test"
+      fi
 
 deploy-staging:
   image: 
@@ -55,6 +72,7 @@ deploy-staging:
   needs:
     - build-job
     - deploy-dev
+      artifacts: true
   only:
     - main
   when: on_success
@@ -74,6 +92,7 @@ deploy-prod:
   needs:
     - build-job
     - deploy-staging
+      artifacts: true
   only:
     - main
   when: on_success
