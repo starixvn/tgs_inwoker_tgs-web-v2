@@ -24,7 +24,7 @@ export const SocialMediaList = () => {
   }
 
   return (
-    <div className="flex gap-2 justify-center">
+    <div className="flex gap-2 justify-start flex-wrap">
       {socialMediaList?.map((socialMedia) => (
         <a
           className="block rounded-full bg-cover bg-center w-10 h-10"
