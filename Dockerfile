@@ -1,14 +1,14 @@
-FROM node:16.14.2-stretch-slim AS dependencies
+FROM node:20.0.0-stretch-slim AS dependencies
 WORKDIR /app
 COPY package.json yarn.lock ./
 RUN yarn install --frozen-lockfile
 
-FROM node:16.14.2-stretch-slim AS builder
+FROM node:20.0.0-stretch-slim AS builder
 WORKDIR /app
-COPY --from=dependencies /app/node_modules ./node_modules
+COPY --from=dependencies /node_modules ./node_modules
 COPY . .
-RUN yarn nx build .
+RUN yarn build .
 
 FROM caddy:2.1.1-alpine AS runner
 COPY --from=builder /app/Caddyfile /etc/caddy/Caddyfile
-COPY --from=builder /app/dist/apps/tgs-web-t19 /usr/share/caddy
+COPY --from=builder /app /usr/share/caddy
