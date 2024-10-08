@@ -56,7 +56,12 @@ deploy-dev:
         helm template $brand deployment -f values.yaml -n ${namespace}
         helm template $brand deployment -f values.yaml -n ${namespace} | kubectl apply -f - 
       else 
-        echo "test"
+         lobbies="${env}_v2"
+         echo "lobbies=${!lobbies}"  
+         IFS=',' read -ra array <<< "${!lobbies}"
+         for lb in "${array[@]}"; do
+            kubectl set image deployment/$lb $lb=${image} --record -n ${namespace}
+         done
       fi
 
 deploy-staging:
