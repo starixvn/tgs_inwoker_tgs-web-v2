@@ -6,7 +6,7 @@ import { LOCAL_STORAGE_KEY, QUERY_KEYS } from "@/types";
 export const useGetPlayerInfo = () => {
   const { token, clearToken } = useStoreToken();
 
-  const { isFetching, data, isError, error } = useQuery({
+  const { isFetching, isError, error } = useQuery({
     queryKey: [QUERY_KEYS.PLAYER_INFO, token],
     queryFn: () => {
       if (token) {
@@ -29,7 +29,6 @@ export const useGetPlayerInfo = () => {
   });
 
   return {
-    data: data ? data?.data.data : undefined,
     isFetching,
   };
 };

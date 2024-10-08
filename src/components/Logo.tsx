@@ -1,7 +1,5 @@
-import { cn } from "@/lib";
-import { GetBrandDto } from "@/service";
-import { GetQueryData, QUERY_KEYS, ROUTES } from "@/types";
-import { useQueryClient } from "@tanstack/react-query";
+import { cn, useBrandData } from "@/lib";
+import { ROUTES } from "@/types";
 import { Link } from "react-router-dom";
 import { AspectRatio } from "./ui";
 
@@ -10,9 +8,7 @@ type Props = {
 };
 
 export const Logo = ({ className }: Props) => {
-  const qc = useQueryClient();
-  const data = qc.getQueryData([QUERY_KEYS.BRAND]) as GetQueryData<GetBrandDto>;
-  const brandData = data?.data.data;
+  const brandData = useBrandData();
   return (
     <Link
       to={ROUTES.HOME}

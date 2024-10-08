@@ -8,5 +8,5 @@ export const useLanguageList = () => {
     QUERY_KEYS.BRAND_LANGUAGE,
   ]) as GetQueryData<GetBrandLanguageDto>;
 
-  return data?.data.data;
+  return data?.data;
 };

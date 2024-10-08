@@ -12,7 +12,7 @@ export const useLogin = () => {
 
   const { mutate, isPending } = useMutation({
     mutationFn: (payload: LoginPayload) => auth.login(payload),
-    onSuccess: ({ data }, payload) => {
+    onSuccess: (data, payload) => {
       if (data.token) {
         onChange(data.token);
         localStorage.setItem(LOCAL_STORAGE_KEY.TOKEN, data.token);

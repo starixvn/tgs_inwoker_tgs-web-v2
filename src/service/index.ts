@@ -1,5 +1,5 @@
 import { LOCAL_STORAGE_KEY } from "@/types";
-import axios, { AxiosResponse } from "axios";
+import axios from "axios";
 
 export const api = axios.create({
   baseURL: import.meta.env.PROD ? "/api/" : import.meta.env.VITE_API_URL,
@@ -22,7 +22,7 @@ api.interceptors.response.use(
       console.error("錯誤:", error.message);
     }
     return Promise.reject(error);
-  }
+  },
 );
 
 export const getHeaders = (token: string) => {
@@ -33,7 +33,7 @@ export const getHeaders = (token: string) => {
   };
 };
 
-export type ApiResponse<T> = Promise<AxiosResponse<T>>;
+export type ApiResponse<T> = Promise<T>;
 
 export * from "./common";
 export * from "./types";

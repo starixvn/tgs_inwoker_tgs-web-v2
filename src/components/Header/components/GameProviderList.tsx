@@ -1,7 +1,6 @@
-import { useBrandConfig } from "@/lib";
-import { getGameProviderDto, ProviderDto } from "@/service";
-import { GAME_TYPE_CODE, GetQueryData, QUERY_KEYS } from "@/types";
-import { useQueryClient } from "@tanstack/react-query";
+import { useGameProvider } from "@/lib";
+import { ProviderDto } from "@/service";
+import { GAME_TYPE_CODE } from "@/types";
 
 type Props = {
   activeGameType: GAME_TYPE_CODE;
@@ -11,13 +10,7 @@ type Props = {
  * 待確認是否實作
  */
 export const GameProviderList = ({ activeGameType }: Props) => {
-  const qc = useQueryClient();
-  const { currency } = useBrandConfig();
-  const data = qc.getQueryData([
-    QUERY_KEYS.GAME_PROVIDER_LIST,
-    currency,
-  ]) as GetQueryData<getGameProviderDto>;
-  const providerList = data?.data.data;
+  const providerList = useGameProvider();
   const filteredProviderList = providerList?.filter((provider: ProviderDto) =>
     provider.gametypes.includes(activeGameType),
   );
