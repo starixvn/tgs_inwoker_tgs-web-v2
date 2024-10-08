@@ -10,6 +10,6 @@ export const useSocialMedia = () => {
 
   return {
     isFetching,
-    socialMediaList: data ? data.data.data : [],
+    socialMediaList: data ? data.data : [],
   };
 };

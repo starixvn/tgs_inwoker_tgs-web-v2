@@ -11,5 +11,5 @@ export const useGameProvider = () => {
     currency,
   ]) as GetQueryData<getGameProviderDto>;
 
-  return data?.data.data;
+  return data?.data;
 };

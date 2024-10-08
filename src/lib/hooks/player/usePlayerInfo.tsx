@@ -11,5 +11,5 @@ export const usePlayerInfo = () => {
     token,
   ]) as GetQueryData<GetPlayerInfoDto>;
 
-  return data?.data.data;
+  return data?.data;
 };

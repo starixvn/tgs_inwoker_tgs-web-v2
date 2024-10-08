@@ -1,5 +1,5 @@
 import i18n from "@/i18n";
-import { api, ApiResponse } from "..";
+import { api, ApiResponse } from "@/service";
 import { getGameProviderDto } from "./types";
 import { CURRENCY, QUERY_KEYS } from "@/types";
 import { plateformType } from "@/lib";

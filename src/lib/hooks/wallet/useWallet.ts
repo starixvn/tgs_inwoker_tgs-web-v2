@@ -11,7 +11,7 @@ export const useWallet = () => {
     QUERY_KEYS.WALLET,
     token,
   ]) as GetQueryData<GetWalletDto>;
-  const value = data?.data.data.main ?? 0;
+  const value = data?.data.main ?? 0;
 
   return {
     balance: currency.formatCurrency({

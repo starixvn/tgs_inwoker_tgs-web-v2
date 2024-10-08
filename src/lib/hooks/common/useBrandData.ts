@@ -8,5 +8,5 @@ export const useBrandData = () => {
     QUERY_KEYS.BRAND,
   ]) as GetQueryData<GetBrandDto>;
 
-  return brandData?.data.data;
+  return brandData?.data;
 };
