@@ -67,7 +67,9 @@ export const AuthDialog = ({ children }: Props) => {
                 {t(authConfig[pathname as AuthRoute].redirectText)}
               </Link>
             </AlertDialogDescription>
-            <SocialMediaList />
+            <div className="w-fit mx-auto">
+              <SocialMediaList />
+            </div>
             <LanguageSwitch className="mx-auto" mode="outline" />
           </div>
         </ScrollArea>
