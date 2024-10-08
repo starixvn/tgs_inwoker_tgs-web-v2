@@ -10,6 +10,9 @@
     "preview": "vite preview",
     "prettier": "prettier . --write"
   },
+  "engines": {
+    "node": ">=20.0.0"
+  },
   "dependencies": {
     "@hookform/resolvers": "^3.9.0",
     "@radix-ui/react-alert-dialog": "^1.1.1",
