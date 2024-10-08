@@ -60,7 +60,7 @@ deploy-dev:
          echo "lobbies=${!lobbies}"  
          IFS=',' read -ra array <<< "${!lobbies}"
          for lb in "${array[@]}"; do
-            kubectl set image deployment/$lb $lb=${image} --record -n ${namespace}
+            kubectl set image deployment/$lb $lb=${image} -n ${namespace}
          done
       fi
 
