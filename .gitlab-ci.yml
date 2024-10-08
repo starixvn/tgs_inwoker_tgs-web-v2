@@ -34,8 +34,6 @@ deploy-dev:
   stage: deploy-dev
   tags:
     - dev
-    - kubernetes
-    - deploy
   needs:
     - build-job
   only:
@@ -54,8 +52,6 @@ deploy-staging:
   stage: deploy-staging
   tags:
     - staging
-    - kubernetes
-    - deploy
   needs:
     - build-job
     - deploy-dev
@@ -75,8 +71,6 @@ deploy-prod:
   stage: deploy-prod
   tags:
     - prod
-    - kubernetes
-    - deploy
   needs:
     - build-job
     - deploy-staging
