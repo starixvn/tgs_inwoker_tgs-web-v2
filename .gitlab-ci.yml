@@ -45,16 +45,7 @@ build-job:       # This job runs in the build stage, which runs first.
 
       yarn add -D @nx/react@17.0.2
 
-      git submodule init
-      git submodule sync
-      git submodule update --remote
-      git status
-
-      if [[ $app != "" ]]; then 
-          yarn docker-build:single $app
-      else 
-          yarn docker-build:${tgs_env}
-      fi
+      yarn docker-build:latest
 
       docker image ls  
       image_count=$(docker image ls | wc  -l)
