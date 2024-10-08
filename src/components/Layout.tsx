@@ -1,5 +1,5 @@
 import { Outlet } from "react-router-dom";
-import { Header, Loading, Modal } from "@/components";
+import { Footer, Header, Loading, Modal } from "@/components";
 import { useInitBrand } from "@/lib";
 import { Toaster } from "./ui";
 
@@ -19,7 +19,7 @@ export function Layout() {
         <section className="flex-1">
           <Outlet />
         </section>
-        <footer>footer</footer>
+        <Footer />
       </main>
     </>
   );

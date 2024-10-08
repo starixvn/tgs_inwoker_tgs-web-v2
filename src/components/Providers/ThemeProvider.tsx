@@ -28,7 +28,7 @@ export const ThemeProvider = ({ children }: Props) => {
         value={theme}
         onValueChange={(theme: TEMPLATE) => setTheme(theme)}
       >
-        <SelectTrigger className="w-[180px] fixed bottom-1 right-1">
+        <SelectTrigger className="w-[180px] fixed bottom-1 right-1 bg-foreground text-background">
           <SelectValue placeholder="Theme" />
         </SelectTrigger>
         <SelectContent>

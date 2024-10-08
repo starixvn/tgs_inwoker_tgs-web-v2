@@ -11,3 +11,4 @@ export * from "./toaster";
 export * from "./toast";
 export * from "./skeleton";
 export * from "./scroll-area";
+export * from "./aspect-ratio";

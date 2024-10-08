@@ -9,3 +9,5 @@ export * from "./HoverCard";
 export * from "./Routers";
 export * from "./auth";
 export * from "./SocialMediaList";
+export * from "./Footer";
+export * from "./Logo";

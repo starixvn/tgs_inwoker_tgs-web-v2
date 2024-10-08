@@ -75,6 +75,11 @@
     --dialog-foreground: 31 100 65%;
 
     --border: 0 0% 14.9%;
+
+    /* footer */
+    --footer-background: 0 0% 47%;
+    --footer-foreground: 0 0% 100%;
+
     /* 未設定 */
     --card: 0 0% 3.9%;
     --card-foreground: 0 0% 98%;
@@ -133,6 +138,10 @@
     --input-border: 0 0% 100%;
 
     --border: 0 0% 100%;
+
+    /* footer */
+    --footer-background: 220 66 25%;
+    --footer-foreground: 0 0% 100%;
 
     /* 未設定 */
     --card: 0 0% 3.9%;

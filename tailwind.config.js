@@ -35,7 +35,10 @@ export default {
           text: "hsl(var(--dialog-text))",
           foreground: "hsl(var(--dialog-foreground))",
         },
-
+        footer: {
+          background: "hsl(var(--footer-background))",
+          foreground: "hsl(var(--footer-foreground))",
+        },
         background: "hsl(var(--background))",
         foreground: "hsl(var(--foreground))",
         card: {

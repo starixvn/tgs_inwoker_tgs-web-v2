@@ -4,8 +4,8 @@ import {
   AnonymousHeaderContent,
   Nav,
   SystemTime,
-  Logo,
 } from "./components";
+import { Logo } from "@/components";
 
 const MobileHeader = ({ children }: { children: React.ReactNode }) => {
   return (
@@ -15,7 +15,7 @@ const MobileHeader = ({ children }: { children: React.ReactNode }) => {
         background: "var(--header-background)",
       }}
     >
-      <Logo />
+      <Logo className="shrink-0 w-20" />
       {children}
     </nav>
   );
@@ -49,7 +49,7 @@ export const Header = () => {
 
       {isLargeSize && (
         <nav className="w-full px-12 py-2 gap-4 flex bg-nav-background text-nav-text">
-          <Logo />
+          <Logo className="shrink-0 w-20" />
           <Nav />
         </nav>
       )}
