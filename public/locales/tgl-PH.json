@@ -60,7 +60,9 @@
     "quickLinks": "Quick Links",
     "customerService": "Chat Customer Service",
     "faq": "FAQs",
-    "partners": "Partners"
+    "partners": "Partners",
+    "home": "Home",
+    "account": "Account"
   },
   "deposit": {
     "title": "Deposit"
