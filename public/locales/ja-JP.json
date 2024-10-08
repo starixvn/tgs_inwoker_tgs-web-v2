@@ -62,7 +62,9 @@
     "faq": "FAQs",
     "partners": "Partners",
     "home": "Home",
-    "account": "Account"
+    "account": "Account",
+    "donotshowagain": "Don't show again",
+    "close": "Close"
   },
   "deposit": {
     "title": "Deposit"

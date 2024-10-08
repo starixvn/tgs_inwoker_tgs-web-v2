@@ -8,6 +8,7 @@ export enum QUERY_KEYS {
   BRAND_LANGUAGE = "brandlanguage",
   BRAND = "brand",
   SOCIAL_MEDIA = "brand/social",
+  ANNOUNCEMENT_LIST = "announcement/list/",
 
   //auth
   LOGIN = "player/login",
@@ -21,4 +22,7 @@ export enum QUERY_KEYS {
 
   //wallet
   WALLET = "wallet",
+
+  //promotion
+  PROMOTION_LIST = "promotion",
 }

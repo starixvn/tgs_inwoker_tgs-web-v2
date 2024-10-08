@@ -2,8 +2,10 @@ import { common } from "@/service";
 import { QUERY_KEYS } from "@/types";
 import { useQuery } from "@tanstack/react-query";
 import {
+  useGetAnnouncement,
   useGetGameProvider,
   useGetPlayerInfo,
+  useGetPromotions,
   useGetWallet,
   useHandleError,
   useInitLanguage,
@@ -18,6 +20,8 @@ export const useInitBrand = () => {
   const getWallet = useGetWallet();
   const initLanguage = useInitLanguage();
   const getGameProvider = useGetGameProvider();
+  const getAnnouncement = useGetAnnouncement();
+  const getPromoions = useGetPromotions();
 
   useHandleError({
     isError,
@@ -30,6 +34,8 @@ export const useInitBrand = () => {
       getPlayerInfo.isFetching ||
       getWallet.isFetching ||
       initLanguage.isFetching ||
-      getGameProvider.isFetching,
+      getGameProvider.isFetching ||
+      getAnnouncement.isFetching ||
+      getPromoions.isFetching,
   };
 };

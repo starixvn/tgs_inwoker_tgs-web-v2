@@ -24,3 +24,5 @@ export * from "./game";
 export * from "./auth";
 export * from "./player";
 export * from "./wallet";
+export * from "./announcement";
+export * from "./promotion";

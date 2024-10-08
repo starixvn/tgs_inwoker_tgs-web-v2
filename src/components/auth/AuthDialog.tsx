@@ -7,6 +7,8 @@ import {
   AlertDialog,
   AlertDialogContent,
   AlertDialogDescription,
+  AlertDialogOverlay,
+  AlertDialogPortal,
   AlertDialogTitle,
   ScrollArea,
 } from "@/components/ui";

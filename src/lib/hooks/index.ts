@@ -4,3 +4,5 @@ export * from "./auth";
 export * from "./store";
 export * from "./player";
 export * from "./wallet";
+export * from "./announcement";
+export * from "./promotion";
