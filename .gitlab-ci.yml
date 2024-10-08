@@ -35,7 +35,7 @@ build-job:       # This job runs in the build stage, which runs first.
       [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh" # This loads nvm
 
       # nvm install 16.14.0
-      nvm use 16.14.0
+      nvm use 18.16.1
       node --version
       npm --version
       yarn --version
