@@ -11,4 +11,4 @@ RUN yarn build .
 
 FROM caddy:2.1.1-alpine AS runner
 COPY --from=builder /app/Caddyfile /etc/caddy/Caddyfile
-COPY --from=builder /app/dist/apps /usr/share/caddy
+COPY --from=builder /app/public /usr/share/caddy
