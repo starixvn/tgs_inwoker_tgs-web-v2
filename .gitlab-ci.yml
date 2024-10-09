@@ -108,11 +108,11 @@ deploy-dev:
             echo ${response_create_rule} | jq
         fi
       else 
-         lobbies="${namespace}_v2"
+         lobbies="${env}_v2"
          echo "lobbies=${!lobbies}"  
          IFS=',' read -ra array <<< "${!lobbies}"
          for lb in "${array[@]}"; do
-            kubectl set image deployment/$lb $lb=${image} -n ${namespace}
+            kubectl set image deployment/$lb $lb=${image} -n ${env}
          done
       fi
 
