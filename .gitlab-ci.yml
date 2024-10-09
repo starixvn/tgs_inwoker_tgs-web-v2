@@ -54,7 +54,7 @@ build-job:
         echo "value=$_value"
 
         if [[ "$_value" == "null" ]]; then
-          url="https://gitlab.com/api/v4/projects/$CI_PROJECT_ID/variables?key=${key}&value=${brand}&environment_scope=${tgs_env}&protected=true"
+          url="https://gitlab.com/api/v4/projects/$CI_PROJECT_ID/variables?key=${key}&value=${brand}&environment_scope=${env}&protected=true"
           curl --request POST --header "PRIVATE-TOKEN: $gitlab_token" "$url"
           echo "variable $key created"
         elif [[ ! ${_value} == "$brand" ]]; then
