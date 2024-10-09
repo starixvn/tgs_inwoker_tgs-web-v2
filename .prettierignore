@@ -1,0 +1,6 @@
+# 忽略所有 YAML 檔案
+*.yaml
+*.yml
+
+# 忽略 Dockerfile
+Dockerfile
