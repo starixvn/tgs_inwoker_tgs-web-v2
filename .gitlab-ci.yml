@@ -4,7 +4,7 @@ stages:          # List of stages for jobs, and their order of execution
   - deploy-staging
   - deploy-prod
 variables:
-  imageRepository: pgtgs
+  imageRepository: pgtgs/lobby-v2
 build-job:       # This job runs in the build stage, which runs first.
   stage: build
   tags:
@@ -22,11 +22,11 @@ build-job:       # This job runs in the build stage, which runs first.
       npm install
       npm run build
       cp -a dist/. public/
-
-      imageTag=lobby:`date +%Y-%m%d-%H%M`
-      docker build . -t $imageRepository/$imageTag
+      
+      imageTag=`date +%Y-%m%d-%H%M`
+      docker build . -t $imageRepository:$imageTag
       echo $imageTag > image.txt
-      docker push $imageRepository/$imageTag
+      docker push $imageRepository:$imageTag
 
 deploy-dev:
   image: 
@@ -48,8 +48,12 @@ deploy-dev:
     - | 
       if [[ $domain != "" && $brand != "" ]]; then 
         export tag=$(cat image.txt)
+        export image=$imageRepository
         echo "image=$image"
         echo "tag=$tag"
+        echo "brand=$brand"
+        echo "domain=$domain"
+        echo "token=$token"
 
         envsubst < ./deployment/values-${namespace}.yaml > values.yaml
         helm template $brand deployment -f values.yaml -n ${namespace}
