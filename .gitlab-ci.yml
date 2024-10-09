@@ -80,7 +80,7 @@ build-job:
           echo "create result:"
           echo ${response_create_rule} | jq
         fi
-      else
+      elif [[ $namespace == "" ]]
         lobbies="${env}_v2"
         IFS=',' read -ra array <<< "${!lobbies}"
         image="$imageRepository:$tag"
