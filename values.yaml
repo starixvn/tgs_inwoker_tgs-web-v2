@@ -1,0 +1,40 @@
+autoscaling:
+  enabled: false
+replicaCount: 1
+
+image:
+  repository: 
+  pullPolicy: IfNotPresent
+  tag: 
+
+imagePullSecrets: 
+- name: dockerhub
+nameOverride: ""
+fullnameOverride: ""
+
+podAnnotations: {}
+podLabels: {}
+
+service:
+  type: ClusterIP
+  port: 80
+
+brandToken: 
+lobbyName: 
+domains:
+  - domain: 
+    lobbyName: 
+    
+nodeSelector: {}
+
+tolerations: []
+
+affinity: {}
+
+resources:
+  limits:
+    cpu: 100m
+    memory: 256Mi
+  requests:
+    cpu: 50m
+    memory: 128Mi
