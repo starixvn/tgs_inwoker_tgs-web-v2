@@ -6,4 +6,5 @@ export enum LOCAL_STORAGE_KEY {
   i18n = "i18nextLng",
   USERNAME = "username",
   REMEMBER_ME = "rememberMe",
+  TEMPLATE = "template",
 }

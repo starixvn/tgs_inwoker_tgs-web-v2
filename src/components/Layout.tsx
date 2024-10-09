@@ -1,5 +1,12 @@
 import { Outlet } from "react-router-dom";
-import { Footer, Head, Header, Loading, Modal } from "@/components";
+import {
+  Footer,
+  Head,
+  Header,
+  Loading,
+  Modal,
+  TemplateSelect,
+} from "@/components";
 import { useInitBrand } from "@/lib";
 import { Toaster } from "./ui";
 
@@ -22,6 +29,7 @@ export function Layout() {
         </section>
         <Footer />
       </main>
+      <TemplateSelect />
     </>
   );
 }

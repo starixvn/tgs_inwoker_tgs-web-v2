@@ -14,3 +14,4 @@ export * from "./Logo";
 export * from "./Head";
 export * from "./AuthLayout";
 export * from "./Menu";
+export * from "./TemplateSelect";
