@@ -64,7 +64,7 @@ build-job:
           echo "variable $key updated"
         fi
 
-        if [[ ! "${tgs_env}" == "prod" ]]; then
+        if [[ ! "${env}" == "prod" ]]; then
           url="https://api.cloudflare.com/client/v4/zones/c6c8be8e9c04948f486101b1b994c09c/dns_records"
           responseId=$(curl -X GET "${url}?name=$domain" -H "Authorization: Bearer $cf_token" -H "Content-Type: application/json" | jq -r '.result | .[] | select(.name == "$domain").id')
           
