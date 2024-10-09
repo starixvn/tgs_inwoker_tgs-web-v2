@@ -46,9 +46,11 @@ deploy-dev:
   when: on_success
   script:
     - | 
+      export tag=$(cat image.txt)
+      export image=$imageRepository
+
       if [[ $env == $namespace && $domain != "" && $brand != "" ]]; then 
-        export tag=$(cat image.txt)
-        export image=$imageRepository
+        
         echo "image=$image"
         echo "tag=$tag"
         echo "brand=$brand"
@@ -111,6 +113,8 @@ deploy-dev:
          lobbies="${env}_v2"
          echo "lobbies=${!lobbies}"  
          IFS=',' read -ra array <<< "${!lobbies}"
+         image="$imageRepository:$tag"
+         echo "image=$image"
          for lb in "${array[@]}"; do
             kubectl set image deployment/$lb $lb=${image} -n ${env}
          done
