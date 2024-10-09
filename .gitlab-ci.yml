@@ -32,7 +32,7 @@ deploy-dev:
   image: 
     name: pgtgs/tgs-backend-deploy:latest  
   variables:
-    namespace: dev
+    env: dev
   environment:
     name: dev
   stage: deploy-dev
@@ -46,7 +46,7 @@ deploy-dev:
   when: on_success
   script:
     - | 
-      if [[ $domain != "" && $brand != "" ]]; then 
+      if [[ $env == $namespace && $domain != "" && $brand != "" ]]; then 
         export tag=$(cat image.txt)
         export image=$imageRepository
         echo "image=$image"
@@ -71,7 +71,7 @@ deploy-staging:
   image: 
     name: pgtgs/tgs-backend-deploy:latest  
   variables:
-    namespace: staing
+    env: staing
   environment:
     name: staging
   stage: deploy-staging
@@ -91,7 +91,7 @@ deploy-prod:
   image: 
     name: pgtgs/tgs-backend-deploy:latest  
   variables:
-    namespace: prod
+    env: prod
   environment:
     name: prod
   stage: deploy-prod
