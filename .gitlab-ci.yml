@@ -90,7 +90,7 @@ deploy-dev:
                 result=$(curl -X POST "${url}" \
                    -H "Authorization: Bearer $cf_token" \
                    -H "Content-Type: application/json" \
-                 --data '{"type":"CNAME","name":"'$domain'","content":"'${tgs_env}'-entry.rpgp.cc","proxied":true}')
+                 --data '{"type":"CNAME","name":"'$domain'","content":"'${env}'-entry.rpgp.cc","proxied":true}')
                  
                 echo "create result:${result}"
             fi 
@@ -103,7 +103,7 @@ deploy-dev:
             response_create_rule=$(curl -X POST "https://api.cloudflare.com/client/v4/zones/${zoneid}/firewall/rules" \
                 -H "Authorization: Bearer $token" \
                 -H "Content-Type: application/json" \
-                --data '[{"action": "block","paused": false,"description": "Block Taiwan","filter":{"expression": "(ip.geoip.country in {\"TW\"} and not ip.src in {220.133.218.203})","paused": false }}]')
+                --data '[{"action": "block","paused": false,"description": "Block Taiwan","filter":{"expression": "(ip.geoip.country in {\"TW\"} and not ip.src in {125.227.69.109 125.227.69.112})","paused": false }}]')
             echo "create result:"
             echo ${response_create_rule} | jq
         fi
