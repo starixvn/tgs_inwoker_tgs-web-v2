@@ -121,7 +121,7 @@ deploy-staging:
     - build-job
   only:
     - main
-  when: on_success
+  when: manual
   <<: *deploy-job-script
 
 deploy-prod:
@@ -139,5 +139,5 @@ deploy-prod:
     - deploy-staging
   only:
     - main
-  when: on_success
+  when: manual
   <<: *deploy-job-script
