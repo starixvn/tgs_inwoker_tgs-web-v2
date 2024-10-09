@@ -39,6 +39,10 @@ export default {
           background: "hsl(var(--footer-background))",
           foreground: "hsl(var(--footer-foreground))",
         },
+        menu: {
+          background: "hsl(var(--menu-background))",
+          foreground: "hsl(var(--menu-foreground))",
+        },
         background: "hsl(var(--background))",
         foreground: "hsl(var(--foreground))",
         card: {

@@ -8,6 +8,10 @@ export enum ROUTES {
   DEPOSIT = "/deposit",
   WITHDRAWAL = "/withdrawal",
   INBOX = "/inbox",
+  AGENT = "/agent",
+  WAGERING = "/wagering",
+  REPORT = "/report",
+  CONTACT = "/contact",
 
   //auth
   LOGIN = "/login",

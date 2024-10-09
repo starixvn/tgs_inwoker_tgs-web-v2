@@ -12,3 +12,5 @@ export * from "./SocialMediaList";
 export * from "./Footer";
 export * from "./Logo";
 export * from "./Head";
+export * from "./AuthLayout";
+export * from "./Menu";

@@ -48,7 +48,7 @@ export const Header = () => {
       </div>
 
       {isLargeSize && (
-        <nav className="w-full px-12 py-2 gap-4 flex bg-nav-background text-nav-text">
+        <nav className="w-full max-w-full overflow-hidden px-12 py-2 gap-4 flex bg-nav-background text-nav-text">
           <Logo className="shrink-0 w-20" />
           <Nav />
         </nav>

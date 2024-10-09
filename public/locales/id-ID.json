@@ -1,6 +1,7 @@
 {
   "auth": {
     "login": "Login",
+    "logout": "Logout",
     "register": "Register",
     "forgetPassword": "Forget Password",
     "description": {
@@ -62,7 +63,25 @@
     "faq": "FAQs",
     "partners": "Partners",
     "home": "Home",
-    "account": "Account"
+    "contact": "Contact"
+  },
+  "vip": {
+    "title": "VIP"
+  },
+  "inbox": {
+    "title": "Inbox"
+  },
+  "report": {
+    "title": "Report"
+  },
+  "profile": {
+    "title": "Profile"
+  },
+  "agent": {
+    "title": "Agent"
+  },
+  "wagering": {
+    "title": "Wagering"
   },
   "deposit": {
     "title": "Deposit"

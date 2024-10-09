@@ -17,7 +17,7 @@ export function Layout() {
       <main className="min-h-dvh flex flex-col w-full">
         <Modal />
         <Header />
-        <section className="flex-1">
+        <section className="flex-1 flex flex-col">
           <Outlet />
         </section>
         <Footer />

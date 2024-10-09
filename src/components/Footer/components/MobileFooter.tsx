@@ -1,17 +1,11 @@
-import { ROUTES } from "@/types";
+import { MenuItem, ROUTES } from "@/types";
 import { Gift, HandCoins, House, PiggyBank, UserRound } from "lucide-react";
 import { useTranslation } from "react-i18next";
 import { Link } from "react-router-dom";
 
-type Link = {
-  url: ROUTES;
-  title: string;
-  icon: React.ReactNode;
-};
-
 export const MobileFooter = () => {
   const { t } = useTranslation();
-  const links: Link[] = [
+  const links: MenuItem[] = [
     {
       url: ROUTES.HOME,
       title: "common.home",
@@ -34,7 +28,7 @@ export const MobileFooter = () => {
     },
     {
       url: ROUTES.PROFILE,
-      title: "common.account",
+      title: "profile.title",
       icon: <UserRound />,
     },
   ];
