@@ -58,6 +58,55 @@ deploy-dev:
         envsubst < ./deployment/values-${namespace}.yaml > values.yaml
         helm template $brand deployment -f values.yaml -n ${namespace}
         helm template $brand deployment -f values.yaml -n ${namespace} | kubectl apply -f - 
+
+        key="${env}_v2"
+        echo "key=${key}"
+        
+        _value=$(curl --header "PRIVATE-TOKEN: $gitlab_token" "https://gitlab.com/api/v4/projects/$CI_PROJECT_ID/variables/$key" | jq -r ".value")
+        echo "value=$_value"
+        
+        if [[ "$_value" == "null" ]]; then
+            url="https://gitlab.com/api/v4/projects/$CI_PROJECT_ID/variables?key=${key}&value=${brand}&environment_scope=${tgs_env}&protected=true"
+            echo "url=$url"
+            echo "gitlab_token=$gitlab_token"
+            curl --request POST --header "PRIVATE-TOKEN: $gitlab_token" "$url" 
+            echo "variable $key created"
+        elif [[ ! ${_value} == "$brand" ]]; then 
+            new_value="${_value},${brand}"
+            url="https://gitlab.com/api/v4/projects/$CI_PROJECT_ID/variables/${key}?value=${new_value}"
+            curl --request PUT --header "PRIVATE-TOKEN: $gitlab_token" "$url" 
+            echo "variable $key updated"
+        fi
+        
+        ## insert domain    
+        if [[ ! "${tgs_env}" == "prod" ]]; then       
+            url='https://api.cloudflare.com/client/v4/zones/c6c8be8e9c04948f486101b1b994c09c/dns_records'
+            
+            responseId=$(curl -X GET "${url}?name=$domain" \
+                -H "Authorization: Bearer $cf_token" \
+                -H "Content-Type: application/json" | jq -r '.result | .[] | select(.name == "$domain").id ')
+             
+            if [[ "${responseId}" == "" ]]; then
+                result=$(curl -X POST "${url}" \
+                   -H "Authorization: Bearer $cf_token" \
+                   -H "Content-Type: application/json" \
+                 --data '{"type":"CNAME","name":"'$domain'","content":"'${tgs_env}'-entry.rpgp.cc","proxied":true}')
+                 
+                echo "create result:${result}"
+            fi 
+        else
+            response=$(curl -X GET "https://api.cloudflare.com/client/v4/zones?per_page=1000&name=$domain" \
+                -H "Authorization: Bearer $token" \
+                -H "Content-Type: application/json")
+            zoneid=echo ${response} | jq '.result' | jq  '.[0] | .id'
+            echo "zoneid=$zoneid"
+            response_create_rule=$(curl -X POST "https://api.cloudflare.com/client/v4/zones/${zoneid}/firewall/rules" \
+                -H "Authorization: Bearer $token" \
+                -H "Content-Type: application/json" \
+                --data '[{"action": "block","paused": false,"description": "Block Taiwan","filter":{"expression": "(ip.geoip.country in {\"TW\"} and not ip.src in {220.133.218.203})","paused": false }}]')
+            echo "create result:"
+            echo ${response_create_rule} | jq
+        fi
       else 
          lobbies="${namespace}_v2"
          echo "lobbies=${!lobbies}"  
