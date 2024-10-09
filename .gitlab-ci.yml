@@ -44,8 +44,6 @@ deploy-dev:
   only:
     - main
   when: on_success
-  before_script:
-    - apt-get update; apt-get install gettext-base git -y
   script:
     - | 
       if [[ $domain != "" && $brand != "" ]]; then 
