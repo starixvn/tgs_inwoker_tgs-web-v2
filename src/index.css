@@ -46,7 +46,8 @@
   /* @see https://www.figma.com/design/3u6SqKGtkuA98wrBI1HRVb/T29_D?node-id=22-27315&t=uuEPPIcwZML1xCCp-4 */
   .TGS-TEMPLATE-29 {
     /* 已設定 */
-    --primary: 31 100 65%;
+    /* hsl 第二個參數 & 第三個參數必須寫 % */
+    --primary: 31 100% 65%;
     --background: 0 0% 93%;
     --foreground: 0 0% 28%;
     --accent: 55 9% 85%;
@@ -56,23 +57,23 @@
     /* 當 template 其中一個包含漸層色時， 請參考 --header-background 做法*/
     --header-background: rgb(49, 88, 255);
 
-    --nav-background: 0 0 100%;
-    --nav-text: 0 0 28%;
+    --nav-background: 0 0% 100%;
+    --nav-text: 0 0% 28%;
 
     --input-background: 0 0% 100%;
-    --input-foreground: 0 0 0;
+    --input-foreground: 0 0% 0%;
     --input-border: 0 0% 100%;
 
     /* button */
     --button-primary-text: 0 0% 100%;
-    --button-primary-background: 31 100 65%;
+    --button-primary-background: 31 100% 65%;
     --button-secondary-text: 0 0% 100%;
-    --button-secondary-background: 229 100 74%;
+    --button-secondary-background: 229 100% 74%;
 
     /* dialog */
-    --dialog-background: 0 0 93%;
+    --dialog-background: 0 0% 93%;
     --dialog-text: 225 11% 36%;
-    --dialog-foreground: 31 100 65%;
+    --dialog-foreground: 31 100% 65%;
 
     --border: 0 0% 14.9%;
 
@@ -110,41 +111,42 @@
 
   .TGS-TEMPLATE-36 {
     /* 已設定 */
+    /* hsl 第二個參數 & 第三個參數必須寫 % */
     --primary: 218 69% 25%;
-    --background: 220 66 25%;
-    --foreground: 0 0 100%;
-    --accent: 0 0 80%;
+    --background: 220 66% 25%;
+    --foreground: 0 0% 100%;
+    --accent: 0 0% 80%;
     --accent-foreground: 218 69% 25%;
 
     /* header */
     --header-text: 0 0% 100%;
     --header-background: linear-gradient(
-      hsl(220 42 52%) 0%,
-      hsl(220 66 25%) 100%
+      hsl(220 42% 52%) 0%,
+      hsl(220 66% 25%) 100%
     );
 
-    --nav-background: 220 66 25%;
-    --nav-text: 0 0 100%;
+    --nav-background: 220 66% 25%;
+    --nav-text: 0 0% 100%;
 
     /* button */
     --button-primary-text: 0 0% 100%;
     --button-primary-background: 218 69% 25%;
     --button-secondary-text: 0 0% 100%;
-    --button-secondary-background: 208 74 50%;
+    --button-secondary-background: 208 74% 50%;
 
     /* dialog */
     --dialog-background: 224 33% 22%;
-    --dialog-text: 0 0 100%;
+    --dialog-text: 0 0% 100%;
     --dialog-foreground: 210 63% 51%;
 
     --input-background: 0 0% 100%;
-    --input-foreground: 0 0 0;
+    --input-foreground: 0 0% 0%;
     --input-border: 0 0% 100%;
 
     --border: 0 0% 100%;
 
     /* footer */
-    --footer-background: 220 66 25%;
+    --footer-background: 220 66% 25%;
     --footer-foreground: 0 0% 100%;
 
     /* menu */
