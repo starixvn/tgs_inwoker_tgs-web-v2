@@ -11,7 +11,7 @@ export const CloseButton = () => {
   useKeyboradEvent("Escape", handleEsc);
 
   return (
-    <Link to={url} className="block w-fit ml-auto">
+    <Link to={url} className="ml-auto">
       <Button size="icon" variant="ghost">
         <X />
       </Button>

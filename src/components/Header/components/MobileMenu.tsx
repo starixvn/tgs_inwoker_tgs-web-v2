@@ -54,17 +54,16 @@ export const MobileMenu = () => {
       <SheetContent side="left" className="flex flex-col justify-between">
         <SheetHeader>
           <SheetTitle>
-            <Logo className="w-20" />
+            <Logo className="w-24" />
           </SheetTitle>
-          <div className="flex flex-col gap-1">
+          <div className="flex flex-col mt-5">
             {navItemList.map((navItem, i) => {
               if (!navItem.isHoverCard) return null;
-
               return (
                 <Button
                   variant="ghost"
                   onClick={() => handleOnClick(navItem.routePath)}
-                  className="justify-start text-lg gap-2 px-0"
+                  className="justify-start text-md gap-2 px-0 text-menu-foreground"
                   key={i}
                 >
                   <GameTypeIcon gameType={navItem.gameType} />

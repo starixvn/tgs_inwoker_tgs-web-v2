@@ -50,9 +50,9 @@ export const AuthDialog = ({ children }: Props) => {
 
   return (
     <AlertDialog open>
-      <AlertDialogContent className="gap-5 bg-dialog-background sm:max-w-xl max-w-full h-full sm:h-auto">
+      <AlertDialogContent className="sm:p-6 p-4 flex flex-col bg-dialog-background sm:max-w-xl max-w-full h-full sm:h-auto">
         <CloseButton />
-        <ScrollArea>
+        <ScrollArea className="px-4">
           <div className="flex flex-col gap-5 max-w-sm mx-auto w-full">
             <AlertDialogTitle className="text-dialog-foreground text-4xl text-center">
               {t(authConfig[pathname as AuthRoute].title).toUpperCase()}

@@ -21,10 +21,10 @@ export function Layout() {
     <>
       <Head />
       <Toaster />
-      <main className="min-h-dvh flex flex-col w-full">
+      <main className="min-h-dvh flex flex-col w-full sm:h-auto h-dvh">
         <Modal />
         <Header />
-        <section className="flex-1 flex flex-col">
+        <section className="flex-1 flex flex-col overflow-y-auto">
           <Outlet />
         </section>
         <Footer />

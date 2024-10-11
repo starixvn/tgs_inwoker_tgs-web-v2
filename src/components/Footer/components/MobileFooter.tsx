@@ -1,5 +1,5 @@
 import { MenuItem, ROUTES } from "@/types";
-import { Gift, HandCoins, House, PiggyBank, UserRound } from "lucide-react";
+import { Banknote, Crown, Gift, HandCoins, PiggyBank } from "lucide-react";
 import { useTranslation } from "react-i18next";
 import { Link } from "react-router-dom";
 
@@ -7,9 +7,9 @@ export const MobileFooter = () => {
   const { t } = useTranslation();
   const links: MenuItem[] = [
     {
-      url: ROUTES.HOME,
-      title: "common.home",
-      icon: <House />,
+      url: ROUTES.VIP,
+      title: "vip.title",
+      icon: <Crown />,
     },
     {
       url: ROUTES.DEPOSIT,
@@ -22,14 +22,14 @@ export const MobileFooter = () => {
       icon: <HandCoins />,
     },
     {
+      url: ROUTES.TRANSFER,
+      title: "transfer.title",
+      icon: <Banknote />,
+    },
+    {
       url: ROUTES.PROMOTION,
       title: "common.promotion",
       icon: <Gift />,
-    },
-    {
-      url: ROUTES.PROFILE,
-      title: "profile.title",
-      icon: <UserRound />,
     },
   ];
 
