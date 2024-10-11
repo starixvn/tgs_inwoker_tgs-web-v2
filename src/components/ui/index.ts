@@ -12,3 +12,4 @@ export * from "./toast";
 export * from "./skeleton";
 export * from "./scroll-area";
 export * from "./aspect-ratio";
+export * from "./sheet";

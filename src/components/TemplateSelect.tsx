@@ -20,7 +20,7 @@ export const TemplateSelect = () => {
       value={template}
       onValueChange={(template: TEMPLATE) => onChange(template)}
     >
-      <SelectTrigger className="w-[180px] fixed bottom-1 right-1 bg-foreground text-background">
+      <SelectTrigger className="w-[180px] fixed sm:bottom-1 bottom-16 right-1 bg-foreground text-background">
         <SelectValue placeholder="Theme" />
       </SelectTrigger>
       <SelectContent>

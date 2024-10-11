@@ -42,7 +42,7 @@ export const useGetNavItemList = (providerList?: ProviderDto[]): NavItem[] => {
   };
 
   const vip: NavItem = {
-    label: "VIP",
+    label: t("vip.title"),
     gameType: GAME_TYPE_CODE.NONE,
     isHoverCard: false,
     routePath: ROUTES.VIP,

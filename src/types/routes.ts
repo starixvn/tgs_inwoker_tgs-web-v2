@@ -17,4 +17,11 @@ export enum ROUTES {
   LOGIN = "/login",
   REGISTER = "/register",
   FORGET_PASSWORD = "/forgetPassword",
+
+  //games
+  SPORTS = "/sports",
+  SLOTS = "/slots",
+  LIVE_CASINO = "/liveCasino",
+  // COCK
+  FISHING = "/fishing",
 }

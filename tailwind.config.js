@@ -88,6 +88,9 @@ export default {
           5: "hsl(var(--chart-5))",
         },
       },
+      aspectRatio: {
+        logo: "10 / 3",
+      },
     },
   },
   plugins: [require("tailwindcss-animate")],

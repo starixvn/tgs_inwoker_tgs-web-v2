@@ -18,3 +18,19 @@ export enum GAME_TYPE_CODE {
   TABLEGAME = 16,
   COCKFIGHT = 17,
 }
+
+/**
+ * 遊戲類型 /public/images/gameType/下的圖片檔名
+ */
+export enum GAME_TYPE_ICON {
+  CARD_GAME = "cardGame",
+  EGAME = "egame",
+  ESPORTS = "esports",
+  FISHING = "fishing",
+  HORSE = "horse",
+  LIVE_CASINO = "liveCasino",
+  LOTTERY = "lottery",
+  SABONG = "sabong",
+  SLOT = "slot",
+  SPORTS = "sports",
+}

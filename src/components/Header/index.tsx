@@ -4,20 +4,25 @@ import {
   AnonymousHeaderContent,
   Nav,
   SystemTime,
+  MobileMenu,
 } from "./components";
 import { Logo } from "@/components";
 
-const MobileHeader = ({ children }: { children: React.ReactNode }) => {
+const MobileHeaderLayout = ({ children }: { children: React.ReactNode }) => {
   return (
-    <nav
-      className="w-full p-2 justify-between flex text-nav-text"
+    <header
+      className="w-full p-2 justify-between flex text-nav-text sticky top-0"
       style={{
         background: "var(--header-background)",
       }}
     >
-      <Logo className="shrink-0 w-20" />
+      <div className="flex gap-1 items-center">
+        <MobileMenu />
+        <Logo className="shrink-0 w-20" />
+      </div>
+
       {children}
-    </nav>
+    </header>
   );
 };
 
@@ -32,7 +37,7 @@ export const Header = () => {
   );
 
   if (!isLargeSize) {
-    return <MobileHeader>{authChidlren}</MobileHeader>;
+    return <MobileHeaderLayout>{authChidlren}</MobileHeaderLayout>;
   }
 
   return (

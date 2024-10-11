@@ -1,0 +1,41 @@
+import { GAME_TYPE_CODE, GAME_TYPE_ICON } from "@/types";
+
+type Props = {
+  gameType: GAME_TYPE_CODE;
+};
+
+export const GameTypeIcon = ({ gameType }: Props) => {
+  const iconConfig: Record<GAME_TYPE_CODE, GAME_TYPE_ICON | null> = {
+    [GAME_TYPE_CODE.NONE]: null,
+    [GAME_TYPE_CODE.SPORTS]: GAME_TYPE_ICON.SPORTS,
+    [GAME_TYPE_CODE.RNGSPORTS]: null,
+    [GAME_TYPE_CODE.RNGSPORTSLOBBY]: null,
+    [GAME_TYPE_CODE.ESPORTS]: GAME_TYPE_ICON.ESPORTS,
+    [GAME_TYPE_CODE.LIVE]: GAME_TYPE_ICON.LIVE_CASINO,
+    [GAME_TYPE_CODE.LIVELOBBY]: GAME_TYPE_ICON.LIVE_CASINO,
+    [GAME_TYPE_CODE.QIPAI]: GAME_TYPE_ICON.CARD_GAME,
+    [GAME_TYPE_CODE.QIPAILOBBY]: GAME_TYPE_ICON.CARD_GAME,
+    [GAME_TYPE_CODE.FISH]: GAME_TYPE_ICON.FISHING,
+    [GAME_TYPE_CODE.FISHLOBBY]: GAME_TYPE_ICON.FISHING,
+    [GAME_TYPE_CODE.ARCADE]: GAME_TYPE_ICON.EGAME,
+    [GAME_TYPE_CODE.ARCADELOBBY]: GAME_TYPE_ICON.EGAME,
+    [GAME_TYPE_CODE.LOTTERY]: GAME_TYPE_ICON.LOTTERY,
+    [GAME_TYPE_CODE.LOTTERYLOBBY]: GAME_TYPE_ICON.LOTTERY,
+    [GAME_TYPE_CODE.SLOT]: GAME_TYPE_ICON.SLOT,
+    [GAME_TYPE_CODE.TABLEGAME]: GAME_TYPE_ICON.EGAME,
+    [GAME_TYPE_CODE.COCKFIGHT]: GAME_TYPE_ICON.SABONG,
+  };
+
+  if (!iconConfig[gameType]) {
+    return null;
+  }
+
+  return (
+    <div
+      className="w-5 h-5 bg-center bg-contain bg-no-repeat"
+      style={{
+        backgroundImage: `url("/images/gameType/${iconConfig[gameType]}.svg")`,
+      }}
+    />
+  );
+};
