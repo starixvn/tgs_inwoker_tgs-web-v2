@@ -1,15 +1,16 @@
 import { useTranslation } from "react-i18next";
-import { Link, useLocation } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 
 import { ROUTES } from "@/types";
-import { CloseButton, LanguageSwitch, SocialMediaList } from "@/components";
+import { LanguageSwitch, SocialMediaList } from "@/components";
 import {
-  AlertDialog,
-  AlertDialogContent,
-  AlertDialogDescription,
-  AlertDialogTitle,
+  Dialog,
+  DialogContent,
+  DialogDescription,
+  DialogTitle,
   ScrollArea,
 } from "@/components/ui";
+import { useState } from "react";
 
 type Props = {
   children: React.ReactNode;
@@ -45,20 +46,36 @@ const authConfig: Record<AuthRoute, Config> = {
 };
 
 export const AuthDialog = ({ children }: Props) => {
+  const [open, setOpen] = useState(true);
   const { pathname } = useLocation();
+  const navigate = useNavigate();
   const { t } = useTranslation();
 
   return (
-    <AlertDialog open>
-      <AlertDialogContent className="sm:p-6 p-4 flex flex-col bg-dialog-background sm:max-w-xl max-w-full h-full sm:h-auto">
-        <CloseButton />
+    <Dialog
+      open={open}
+      onOpenChange={(open) => {
+        setOpen(open);
+        if (!open) {
+          /**
+           * @todo 確認要導向首頁還是點擊前的頁面
+           * 1. /promotion -> /login -> /promotion => 會有無限循環的問題
+           * 2. /promotion -> /login -> /home
+           *
+           * 目前為導向首頁
+           */
+          navigate(ROUTES.HOME);
+        }
+      }}
+    >
+      <DialogContent className="sm:p-6 p-4 flex flex-col sm:max-w-xl max-w-full h-full sm:h-auto">
         <ScrollArea className="px-4">
           <div className="flex flex-col gap-5 max-w-sm mx-auto w-full">
-            <AlertDialogTitle className="text-dialog-foreground text-4xl text-center">
+            <DialogTitle className="text-dialog-foreground text-4xl text-center">
               {t(authConfig[pathname as AuthRoute].title).toUpperCase()}
-            </AlertDialogTitle>
+            </DialogTitle>
             {children}
-            <AlertDialogDescription className="flex gap-2 justify-center items-center">
+            <DialogDescription className="flex gap-2 justify-center items-center">
               <span>{t(authConfig[pathname as AuthRoute].description)}</span>
               <Link
                 to={authConfig[pathname as AuthRoute].redirectUrl}
@@ -66,14 +83,14 @@ export const AuthDialog = ({ children }: Props) => {
               >
                 {t(authConfig[pathname as AuthRoute].redirectText)}
               </Link>
-            </AlertDialogDescription>
+            </DialogDescription>
             <div className="w-fit mx-auto">
               <SocialMediaList />
             </div>
             <LanguageSwitch className="mx-auto" mode="outline" />
           </div>
         </ScrollArea>
-      </AlertDialogContent>
-    </AlertDialog>
+      </DialogContent>
+    </Dialog>
   );
 };

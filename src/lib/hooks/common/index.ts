@@ -9,3 +9,4 @@ export * from "./useHandleError";
 export * from "./useLanguageList";
 export * from "./useKeyboardEvent";
 export * from "./useBrandData";
+export * from "./useRedirectUrl";

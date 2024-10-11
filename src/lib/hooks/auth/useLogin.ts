@@ -1,14 +1,12 @@
 import { useMutation } from "@tanstack/react-query";
-import { useLocation, useNavigate } from "react-router-dom";
 import { ApiResponseError, auth, LoginPayload } from "@/service";
-import { useHandleError, useStoreToken } from "@/lib";
-import { LOCAL_STORAGE_KEY, ROUTES } from "@/types";
+import { useHandleError, useRedirectUrl, useStoreToken } from "@/lib";
+import { LOCAL_STORAGE_KEY } from "@/types";
 
 export const useLogin = () => {
   const { onChange } = useStoreToken();
   const { handleError } = useHandleError();
-  const location = useLocation();
-  const navigate = useNavigate();
+  const { handleRedirect } = useRedirectUrl();
 
   const { mutate, isPending } = useMutation({
     mutationFn: (payload: LoginPayload) => auth.login(payload),
@@ -26,12 +24,7 @@ export const useLogin = () => {
         }
       }
 
-      if (location.search.includes("?redirectUrl=")) {
-        navigate(location.search.replace("?redirectUrl=", ""));
-        return;
-      }
-
-      navigate(ROUTES.HOME);
+      handleRedirect();
     },
     onError: (error: ApiResponseError) => {
       handleError(error);

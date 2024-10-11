@@ -10,14 +10,18 @@ export const AnonymousHeaderContent = () => {
   const { t } = useTranslation();
   const location = useLocation();
   const currentPath = location.pathname;
-  const loginUrl = `${ROUTES.LOGIN}?redirectUrl=${currentPath}`;
+  const getRedirectUrl = (redirectUrl: string) =>
+    `${redirectUrl}?redirectUrl=${currentPath}`;
+
+  const loginUrl = getRedirectUrl(ROUTES.LOGIN);
+  const registerUrl = getRedirectUrl(ROUTES.REGISTER);
 
   return (
     <div className="flex gap-2">
       <Link to={loginUrl}>
         <Button>{t("auth.login")}</Button>
       </Link>
-      <Link to={ROUTES.REGISTER}>
+      <Link to={registerUrl}>
         <Button variant="secondary">{t("auth.register")}</Button>
       </Link>
       {!isMobile && <LanguageSwitch />}
